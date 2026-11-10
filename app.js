@@ -406,11 +406,11 @@ function screen9() {
   <p class="lede">The system is a small Python package that records every reference with the environment it was measured in, and replays decisions under different refresh rules without calling the model again.</p>
   <div class="panel">${diagram}<p class="footnote">The environment tracker's fingerprint tells the refresh policy when to regenerate the reference. The ground truth check measures both prompts in the environment in force.</p></div>
   <div class="panel"><div class="label">Components</div><ul class="comps">${comps}</ul></div>
-  <div class="panel"><div class="label">Run it yourself</div>
+  <div class="panel"><div class="label">How these files were produced</div>
+    <p class="footnote">These steps ran in the project's research code, which is not part of this repository. This site only reads the precomputed files in <code>replay/</code>.</p>
     <pre class="cmd">python run_seeds.py 1 2 3 4 5    # model runs, cached
 python run_all.py                # tables from saved runs, no model
-python export_replay.py          # writes the files this page reads
-cd demo &amp;&amp; python3 -m http.server</pre></div>`;
+python export_replay.py          # writes the replay files this page reads</pre></div>`;
 }
 
 const SCREENS = [null, screen1, screen2, screen3, screen4, screen5, screen6, screen7, screen8, screen9];
