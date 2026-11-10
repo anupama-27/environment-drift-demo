@@ -250,7 +250,7 @@ function screen2() {
       ${sameTextNote(shown.some((r) => r.incumbent === r.candidate))}
       <p class="actions"><button class="btn primary" id="runround" ${S.shown >= rs.length ? "disabled" : ""}>${S.shown >= rs.length ? "All rounds before the first change shown" : `Run round ${rs[S.shown].round}`}</button></p></div>
     <div class="panel"><div class="label">Scoreboard</div>${chart}
-      <p class="footnote">Accuracy of the current instruction on the ${d.meta.n_items} questions, in the environment in force. Nothing looks wrong yet.</p></div>
+      <p class="footnote">Accuracy of the current instruction on the ${d.meta.n_items} questions, in the environment in force. ${shown.some((r) => r.false_accept) ? `A promotion already lowered accuracy (round ${shown.filter((r) => r.false_accept).map((r) => r.round).join(", ")}). That is ordinary noise in a 200-question comparison, before anything has changed; step 5 counts it separately.` : "Nothing looks wrong yet."}</p></div>
   </div>
   ${last ? `<div class="panel"><div class="label">Latest decision</div><p>Candidate ${last.candidate} won ${last.wins} and lost ${last.losses} questions against p0's saved answers, so it was ${last.accepted ? "promoted" : "not promoted"}.</p></div>` : ""}`;
 }
@@ -300,8 +300,8 @@ function screen4() {
     <tbody>${trapRows(shown) || `<tr><td colspan="8" class="muted">No candidate scored yet.</td></tr>`}</tbody></table>
     ${sameTextNote(shown.some((r) => r.incumbent === r.candidate))}
     <p class="actions"><button class="btn primary" id="runpost" ${done ? "disabled" : ""}>${done ? "All candidates shown" : `Score the round ${rs[S.shownPost].round} candidate`}</button>
-    <button class="btn-text" id="showall" ${done ? "disabled" : ""}>Show all</button></p>
-    ${mean != null ? `<p>Mean inflation over these ${shown.length} decisions on this seed: <b class="num">${signed(mean)} pp</b> (percentage points of ${d.meta.n_items} questions).</p>` : ""}
+    ${done ? "" : `<button class="btn-text" id="showall">Show all</button>`}</p>
+    ${mean != null ? `<p>Mean inflation over these ${shown.length} decisions on this seed: <b class="num">${signed(mean)} pp</b> (percentage points of ${d.meta.n_items} questions). This is measured against p0, so the reference gets older every round; the all-seed table below fixes the reference age at ${S.all.age} rounds, so the two numbers are not directly comparable.</p>` : ""}
   </div>
   ${done ? `<div class="panel"><div class="label">All ${S.all.seeds.length} seeds, reference age ${S.all.age} rounds</div>${inflationTable(inf)}
     <p class="footnote">Inflation in percentage points of ${S.all.n_items} questions, over all ${S.all.seeds.length} seeds. The bars share one scale around zero; red marks an interval that excludes zero. Only the extraction change and the multiple changes qualify. The decoding change is not distinguishable from the unchanged control.</p></div>` : ""}`;
@@ -317,6 +317,7 @@ function screen5() {
        <p>On this seed: <b class="num">${n("stale")}</b> ${CAUSE.stale}, <b class="num">${n("anyway")}</b> that would have happened anyway, <b class="num">${n("before_change")}</b> before any change (noise in a comparison on ${d.meta.n_items} questions).</p>
        <table class="ledger"><thead><tr><th>Round</th><th>Env</th><th>Current → candidate</th><th class="r">vs p0, stored</th><th class="r">vs p0, fresh</th><th class="r">Accuracy, candidate / current</th><th>Cause</th></tr></thead><tbody>${rows}</tbody></table>
        ${sameTextNote(fp.some((r) => r.incumbent === r.candidate))}
+       ${fp.some((r) => r.cause === "stale" && r.env === "E2") ? `<p class="footnote">Caution: ${fp.filter((r) => r.cause === "stale" && r.env === "E2").map((r) => `round ${r.round}`).join(", ")} happened under the decoding change alone (E2). Across all seeds that change shows no consistent inflation (step 3), so treat ${fp.filter((r) => r.cause === "stale" && r.env === "E2").length > 1 ? "these" : "this one"} as likely noise. The extractor change is the consistent effect.</p>` : ""}
        <p>Across all ${S.all.seeds.length} seeds the frozen rule made <b class="num">${fc.stale + fc.anyway + fc.before_change}</b> false promotions: <b class="num">${fc.stale}</b> ${CAUSE.stale}, <b class="num">${fc.anyway}</b> that a fresh reference would also have made, and <b class="num">${fc.before_change}</b> before any change.</p>
        <p class="footnote">A fresh reference is one regenerated run, so it carries a little noise of its own: with nothing changed, a rerun differs from the stored run by about a tenth of a point on average.</p>`
     : `<span class="stamp calm">No false promotion on this seed</span><p>Every promotion on this seed improved accuracy. Choose another seed from the list on the left to see one where the stale reference changed a decision.</p>`;
@@ -340,6 +341,7 @@ function screen6() {
       ${sameTextNote(p.decisions.some((x) => unparsed(x.round)))}
       <p>This seed: promotions <b class="num">${p.accepted}</b> · false accepts <b class="num">${p.false_accepts}</b> · missed gains <b class="num">${p.false_rejects}</b> · regenerations <b class="num">${p.refreshes}</b> · logical model calls <b class="num">${int(p.logical_calls)}</b> (estimate).</p>
       <p>All ${a.seeds.length} seeds: <b class="num">${pooled.false_accepts} of ${pooled.accepted}</b> promotions were false accepts, and <b class="num">${pooled.false_rejects}</b> real improvements were missed.</p>
+      <table class="ledger"><thead><tr><th>All ${a.seeds.length} seeds</th><th class="r">False accepts</th><th class="r">Missed gains</th><th class="r">Logical calls (est.)</th></tr></thead><tbody>${Object.entries(OPTIONS).map(([k, o]) => { const q = a.policies[POLICY_FOR_OPTION[k]]; return `<tr class="${k === S.vote ? "new" : ""}"><td>${esc(o.title)}${k === S.vote ? " (your pick)" : ""}</td><td class="r">${q.false_accepts} of ${q.accepted}</td><td class="r">${q.false_rejects}</td><td class="r">${int(q.logical_calls[0])}</td></tr>`; }).join("")}</tbody></table>
       <p class="footnote">All three policies choose among the same candidates and are scored on the same questions. Call counts are an estimate from a dry run.</p></div>`;
   }
   return `<p class="lede">Which defense would you deploy? The three rules run over the same candidate pool, so the counts are directly comparable.</p><div class="options">${opts}</div>${result}`;
@@ -347,7 +349,7 @@ function screen6() {
 
 function screen7() {
   const a = S.all, P = a.policies, n = a.seeds.length;
-  const acc = bars(["P1", "P2", "P3"].map((p) => ({ label: SHORT[p], value: P[p].final_acc[0], sd: P[p].final_acc[1], tone: "ink" })), { max: 1, fmt: (r) => pct(r.value) });
+  const acc = bars(["P1", "P2", "P3"].map((p) => ({ label: SHORT[p], value: P[p].final_acc[0], sd: P[p].final_acc[1], tone: "ink" })), { max: 1, fmt: (r) => `${pct(r.value)} ± ${(100 * r.sd).toFixed(1)}` });
   const fa = bars(["P1", "P2", "P3"].map((p) => ({ label: SHORT[p], value: P[p].false_accepts / P[p].accepted, tone: "accent", text: `${P[p].false_accepts}/${P[p].accepted}` })), { max: 1, fmt: (r) => r.text });
   const maxCalls = Math.max(...["P1", "P2", "P3"].map((p) => P[p].logical_calls[0]));
   const calls = bars(["P1", "P2", "P3"].map((p) => ({ label: SHORT[p], value: P[p].logical_calls[0], tone: "soft" })), { max: maxCalls, fmt: (r) => int(r.value) });
@@ -356,15 +358,15 @@ function screen7() {
     return `<tr><td>${s}</td>${["P1", "P2", "P3"].map((p) => `<td class="r">${r[p].false_accepts}/${r[p].accepted}</td>`).join("")}<td class="r">${r.false_promotion_rounds.length ? r.false_promotion_rounds.join(", ") : "none"}</td></tr>`;
   }).join("");
   return `
-  <p class="lede">All ${n} seeds, same candidates and questions for every policy. Accuracy is the mean over seeds with one standard deviation.</p>
+  <p class="lede">All ${n} seeds, same candidates and questions for every policy. False accepts are pooled counts; accuracy is the mean over seeds ± one standard deviation.</p>
   <div class="stat-grid">
     <div class="panel surface stat-main"><h3>False accepts</h3>${fa}<p class="footnote">Promotions that were not improvements, over all promotions, pooled across seeds. Missed real gains: ${["P1", "P2", "P3"].map((p) => `${SHORT[p].toLowerCase()} ${P[p].false_rejects}`).join(", ")}.</p></div>
-    <div class="panel"><h3>Final accuracy</h3>${acc}<p class="footnote">Accuracy of the final instruction in the last environment.</p></div>
+    <div class="panel"><h3>Final accuracy</h3>${acc}<p class="footnote">Accuracy of the final instruction in the last environment, mean ± one standard deviation over seeds. The gaps are within one standard deviation, so the false-accept counts are the clearer evidence.</p></div>
     <div class="panel"><h3>Logical model calls <span class="muted">(estimate)</span></h3>${calls}<p class="footnote">Per run, from a dry run of each policy. Not measured inference cost.</p></div>
   </div>
   <details class="panel"><summary>False accepts and promotions by seed</summary>
     <table class="ledger"><thead><tr><th>Seed</th><th class="r">Frozen</th><th class="r">Every batch</th><th class="r">On change</th><th class="r">False promotion rounds (frozen)</th></tr></thead><tbody>${seedRows}</tbody></table></details>
-  <p class="bigline">The agent didn't get worse. Its ruler did. Refresh the ruler when the world changes, not on every step.</p>`;
+  <p class="bigline">The agent didn't get worse. Its ruler did. In these runs, refreshing the reference when the environment changed cut false accepts from ${P.P1.false_accepts} of ${P.P1.accepted} to ${P.P3.false_accepts} of ${P.P3.accepted}, at about ${Math.round(100 * (P.P3.logical_calls[0] / P.P1.logical_calls[0] - 1))}% more model calls than never refreshing.</p>`;
 }
 
 function screen8() {
@@ -434,7 +436,9 @@ function render() {
     return `<li class="${n === S.step ? "current" : n < S.step ? "done" : ""}"><button data-step="${n}" ${n > S.max ? "disabled" : ""} ${n === S.step ? 'aria-current="step"' : ""}><span class="n">${n}</span><span>${esc(t)}</span></button></li>`;
   }).join("");
   const showEnv = S.step >= 2 && S.step <= 6;
-  const bar = showEnv ? `<div class="statusbar"><span class="envbadge ${S.change && S.step >= 3 ? "drifted" : ""}">environment <b>${envNow()}</b> ${esc(S.d.envs[envNow()])}</span><span class="muted">precomputed run, seed ${m.seed}</span></div>` : "";
+  const env = showEnv ? `<span class="envbadge ${S.change && S.step >= 3 ? "drifted" : ""}">environment <b>${envNow()}</b> ${esc(S.d.envs[envNow()])}</span>` : "";
+  const pooled = S.step === 7 || S.step === 8;
+  const bar = S.step >= 2 ? `<div class="statusbar">${env}<span class="replaytag">Replay of recorded runs</span><span class="muted">${pooled ? `all ${S.all.seeds.length} seeds, measured in advance` : `seed ${m.seed}, measured in advance`}</span></div>` : "";
   $("#stage").innerHTML = `<div class="screen-head"><span class="n">${S.step} / ${STEPS.length}</span><h2>${STEPS[S.step - 1]}</h2></div>${bar}${SCREENS[S.step]()}
     <div class="nav-row"><button class="btn-text" id="back" ${S.step === 1 ? "disabled" : ""}>Back</button>${S.step < STEPS.length ? `<button class="btn primary" id="next" ${canNext() ? "" : "disabled"}>Next</button>` : ""}</div>`;
 }
