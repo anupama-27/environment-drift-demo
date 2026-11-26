@@ -54,4 +54,3 @@ seed,cid,round,env,inc_acc_pct,cand_acc_pct,delta_pp,outcome,wins,losses,accepte
 5,C9,8,E4,75.0,69.5,-5.5,worse,12,23,False,format_line_added,5.0,-4.0,-2.0,-5.5
 5,C10,9,E4,75.0,72.0,-3.0,worse,13,19,False,ok,2.5,0.0,-3.0,-3.0
 5,C11,10,E4,75.0,68.5,-6.5,worse,11,24,False,ok,4.5,-4.0,-2.5,-6.5
-

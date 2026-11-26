@@ -200,7 +200,7 @@ def get_run(seed, gen=None, cache=None):
     os.makedirs(config.RUNS_DIR, exist_ok=True)
     with open(path, "w") as f:
         json.dump(run, f)
-    log.info("Saved %s", path)
+    log.info("Saved %s", os.path.relpath(path, config.ROOT))
     return run
 
 
@@ -221,7 +221,7 @@ def get_runs(seeds=None):
             os.makedirs(config.RUNS_DIR, exist_ok=True)
             with open(run_path(s), "w") as f:
                 json.dump(run, f)
-            log.info("Saved %s", run_path(s))
+            log.info("Saved %s", os.path.relpath(run_path(s), config.ROOT))
         runs.append(get_run(s))
     return runs
 

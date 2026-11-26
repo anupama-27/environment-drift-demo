@@ -12,10 +12,11 @@ toolkit/                        DriftAudit Source
   run_seeds.py                  Model Runs per Seed (the Only Script That Calls the Model)
   run_all.py                    Builds Tables From the Saved Runs, No Model Calls
   table3.py … table10.py        One Script per Result (Mapping in Section 4)
+  stats.py                      Statistics Quoted in the Text, Figure 4 Intervals and Figure 6
   export_replay.py              Writes the Replay Files the Website Reads
   runs/                         The Five Saved Runs (run_seed1 … run_seed5, JSON)
-  results/                      Generated Tables in Markdown, Including table7_trend.md
-  tests/                        Nine Tests for Answer Extraction, Reference Age and the Replay Backend
+  results/                      Generated Tables in Markdown, Including table7_trend.md and stats.md
+  tests/                        23 Tests for Answer Extraction, Reference Age, Replay Export and the Backend
 index.html, app.js, style.css   Interactive Replay (Plain HTML/CSS/JS, No Build Step)
 replay/
   seed1.json … seed5.json       One File per Seed: Rounds, Decisions per Policy, Run Metadata
@@ -57,7 +58,7 @@ Auditing a new loop requires the toolkit itself. The paper's runs used:
 git clone https://github.com/anupama-27/environment-drift-demo
 cd environment-drift-demo/toolkit
 pip install -r requirements.txt
-python3 -m unittest discover -s tests
+python3 -m pytest tests
 ~~~
 
 All commands below run from `toolkit/`. The scripts default to seeds 1–3, so set `DRIFT_SEEDS=1,2,3,4,5` to match the paper. The development set is the first 200 GSM8K training items, shown to the proposer only as errors; the evaluation set is the first 200 GSM8K test items, used for both acceptance and ground truth.
@@ -82,24 +83,30 @@ Skip this step to rebuild the results from the saved runs in `runs/`.
 ~~~bash
 DRIFT_SEEDS=1,2,3,4,5 python3 run_all.py
 DRIFT_SEEDS=1,2,3,4,5 python3 table7.py
+DRIFT_SEEDS=1,2,3,4,5 python3 stats.py
 ~~~
 
-These read only the saved runs and make no model calls. Each script writes a Markdown table to `results/` and a log to `logs/`. The script numbers follow our working drafts, not the paper:
+These read only the saved runs and make no model calls, and together take a few seconds. `run_all.py` builds Tables 3–6 and 8–10 of our working drafts; `table7.py` and `stats.py` run separately. Each script writes to `results/` and a log to `logs/`. The script numbers follow our working drafts, not the paper:
 
 | Paper Result | Script | Output |
 |---|---|---|
-| Table 2, decisions for seed 1 | `table6.py` | `results/table6.md` |
-| Table 3, refresh policies | `table3.py` | `results/table3.md` |
-| Figure 4, drift inflation at age 3 | `table4.py` | `results/table4.md` |
+| Figure 1, policy counts in panel (b) | `table6.py`, `stats.py` | `results/table6.md`, `results/stats.md` |
+| Table 2, decisions for seed 1 | `table6.py`, `table10.py` | `results/table6_decisions.csv`, `results/table10_demo_trace.md` |
+| Table 3, refresh policies | `table3.py` (accuracy, calls, reruns), `stats.py` (false accepts and rejects) | `results/table3.md`, `results/stats.md` |
+| Figure 4, drift inflation at age 3 | `table4.py`, `stats.py` (95% intervals) | `results/table4.md`, `results/stats.md` |
 | Figure 5 and Table 4, reference age | `table7.py` | `results/table7.md`, `results/table7_trend.md` |
-| Figure 6, ablations | `table8.py` | `results/table8.md` |
-| Appendix D, per-seed results | `table9.py` | `results/table9.md` |
+| Figure 6, false accepts by reference | `stats.py` | `results/stats.md` |
+| Appendix C, ablations | `table8.py`, `stats.py` (tests and 2×2 effects) | `results/table8.md`, `results/stats.md` |
+| Appendix D, per-seed results | `table9.py`, `table6.py` | `results/table9.md`, `results/table6_decisions.csv` |
+| Statistics in the Setup and Evaluation text | `stats.py` | `results/stats.md` |
 
-Adding a policy costs no model calls. The stored-incumbent policy, for example, is the frozen policy with a different reference:
+Adding a policy costs no model calls. The stored-incumbent policy, for example, is the frozen policy with a different reference. `stats.py` already reports its false accepts and rejects; to rebuild its row of Table 3 on its own:
 
 ~~~bash
 DRIFT_SEEDS=1,2,3,4,5 DRIFT_FROZEN_MODE=last_accepted python3 table3.py
 ~~~
+
+This overwrites `results/table3.md`; run `table3.py` again without `DRIFT_FROZEN_MODE` to restore it.
 
 ## 5. Reproduce Table 2 (Auditing One Run)
 
@@ -116,17 +123,28 @@ The four policies are replayed on the same 55 candidates over five seeds.
 | Per-batch | 69.7 ± 2.2 | 3/13 | 11 | 6,611 | 11 |
 | Environment-triggered | 72.5 ± 2.2 | 2/16 | 2 | 4,811 | 2 |
 
-Call counts are estimated per seed, not measured inference cost.
+Accuracy, calls and reruns are in `results/table3.md`; false accepts and rejects for all four policies are in `results/stats.md`, which also gives the Fisher tests quoted in the text (p = 0.033, 0.019 and 0.360). Call counts are estimated per seed, not measured inference cost.
 
 ## 7. Reproduce Figures 4 and 5 and Table 4 (Drift Inflation and Reference Age)
 
-Figure 4 is the Drift Probe at reference age 3 (mean over five seeds with 95% CI). Expected: −0.13 pp in Unchanged, which sets the noise floor, and +1.31 pp under extraction drift (95% CI 0.65 to 1.98, positive in all five seeds). Decoding drift has no consistent sign at this sample size.
+Figure 4 is the Drift Probe at reference age 3 (mean over five seeds with 95% CI). Expected: −0.12 pp in Unchanged (95% CI −0.64 to 0.39), which sets the noise floor; −0.59 pp under decoding drift (−2.61 to 1.43), which has no consistent sign; +1.31 pp under extraction drift (0.65 to 1.98, positive in all five seeds); and +1.54 pp with both (0.04 to 3.04). The means are in `results/table4.md` and the intervals in `results/stats.md`.
 
 Figure 5 reports drift inflation at every reference age. Table 4 (`results/table7_trend.md`) holds the candidate set fixed at the 30 candidates from rounds 5–10, so only the reference age changes. After the environment changes, drift inflation grows from 0.13 pp at age 0 (95% CI −1.73 to 2.00) to 2.52 pp at age 5, a paired increase of 2.38 pp (95% CI 0.30 to 4.46) in four of five seeds. With the environment unchanged, no age differs from zero.
 
-## 8. Reproduce Figure 6 (Ablations)
+## 8. Reproduce Figure 6 and Appendix C (What Causes False Accepts)
 
-`table8.py` replays the frozen policy's acceptance rule on the same 55 candidates with parts of the environment schedule switched off. Expected pooled false accepts: 13/34 (38.2%) for the full system, with drift inflation of 1.05 pp; 18/37 (48.6%) with no decoding changes; 12/30 (40.0%) with no extraction changes; and 3/17 (17.6%) against the previous incumbent stored in the previous round. The notes under the table give the initial prompt in the previous round's environment (8/24) and the decoding × extraction interaction on rounds 8–10 (0.27 ± 1.02 pp).
+Figure 6 applies the frozen policy's acceptance rule to the same 55 candidates while changing the reference prompt and the environment its outputs were stored in. `results/stats.md` gives every bar:
+
+| Reference Prompt | Stored Environment | False Accepts | Drift Inflation (pp) |
+|---|---|---|---|
+| Initial prompt | Initial | 13/34 (38.2%) | +1.05 |
+| Initial prompt | Previous round | 8/24 (33.3%) | −0.09 |
+| Initial prompt | Current | 7/22 (31.8%) | −0.34 |
+| Previous incumbent | Initial | 5/16 (31.2%) | −0.45 |
+| Previous incumbent | Previous round | 3/17 (17.6%) | −0.39 |
+| Previous incumbent | Current | 3/18 (16.7%) | −0.32 |
+
+For Appendix C, `table8.py` switches parts of the environment schedule off: pooled false accepts are 18/37 (48.6%) with no decoding changes and 12/30 (40.0%) with no extraction changes. `results/stats.md` gives the paired tests (removing extraction drift lowers drift inflation by 0.59 ± 0.25 pp, p = 0.006; removing decoding drift by 0.89 ± 1.19 pp, p = 0.169) and the 2×2 factorial over rounds 8–10 (+1.33, +1.90 and +3.50 pp, interaction +0.27 ± 1.02 pp, p = 0.59).
 
 ## 9. Export the Replay
 
@@ -142,12 +160,12 @@ Every figure is drawn from the outputs above.
 
 | Figure | Contents | Source |
 |---|---|---|
-| 1 | Overview of DriftAudit | Diagram in the paper source; uses no data |
+| 1 | Overview of DriftAudit | Diagram in the paper source; the counts in panel (b) are in `results/stats.md` |
 | 2 | Per-round view of the replay (frozen policy, seed 5) | Replay step 5, drawn by `app.js` from `replay/seed5.json` |
 | 3 | Five-seed dashboard | Replay step 7, drawn by `app.js` from `replay/all_seeds.json` |
-| 4 | Drift inflation at reference age 3 | `results/table4.md` |
+| 4 | Drift inflation at reference age 3 | `results/table4.md`, intervals in `results/stats.md` |
 | 5 | Drift inflation by reference age | `results/table7.md` |
-| 6 | Pooled false accepts by reference prompt and stored environment | `results/table8.md` |
+| 6 | Pooled false accepts by reference prompt and stored environment | `results/stats.md` |
 
 ## License
 

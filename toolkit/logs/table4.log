@@ -1,30 +1,30 @@
-2026-10-07 23:47:51,787 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
-2026-10-07 23:47:51,798 INFO seed 1 E1: {'n': 8, 'stored_win': 0.095, 'rerun_win': 0.09625, 'inflation': -0.0012500000000000072, 'promoted': 5, 'false_accepts': 2, 'false_accept_rate': 0.4, 'env_changed': 0}
-2026-10-07 23:47:51,798 INFO seed 2 E1: {'n': 8, 'stored_win': 0.098125, 'rerun_win': 0.094375, 'inflation': 0.003749999999999998, 'promoted': 1, 'false_accepts': 1, 'false_accept_rate': 1.0, 'env_changed': 0}
-2026-10-07 23:47:51,798 INFO seed 3 E1: {'n': 8, 'stored_win': 0.07875, 'rerun_win': 0.08625000000000001, 'inflation': -0.007500000000000001, 'promoted': 5, 'false_accepts': 1, 'false_accept_rate': 0.2, 'env_changed': 0}
-2026-10-07 23:47:51,798 INFO seed 4 E1: {'n': 8, 'stored_win': 0.099375, 'rerun_win': 0.09875, 'inflation': 0.0006250000000000006, 'promoted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'env_changed': 0}
-2026-10-07 23:47:51,798 INFO seed 5 E1: {'n': 8, 'stored_win': 0.07875, 'rerun_win': 0.080625, 'inflation': -0.001875, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 0}
-2026-10-07 23:47:51,803 INFO seed 1 E2: {'n': 8, 'stored_win': 0.10187500000000001, 'rerun_win': 0.124375, 'inflation': -0.022499999999999992, 'promoted': 3, 'false_accepts': 1, 'false_accept_rate': 0.3333333333333333, 'env_changed': 8}
-2026-10-07 23:47:51,803 INFO seed 2 E2: {'n': 8, 'stored_win': 0.08499999999999999, 'rerun_win': 0.0675, 'inflation': 0.017499999999999998, 'promoted': 0, 'false_accepts': 0, 'false_accept_rate': None, 'env_changed': 8}
-2026-10-07 23:47:51,804 INFO seed 3 E2: {'n': 8, 'stored_win': 0.100625, 'rerun_win': 0.096875, 'inflation': 0.0037500000000000016, 'promoted': 5, 'false_accepts': 3, 'false_accept_rate': 0.6, 'env_changed': 8}
-2026-10-07 23:47:51,804 INFO seed 4 E2: {'n': 8, 'stored_win': 0.08812500000000001, 'rerun_win': 0.104375, 'inflation': -0.016249999999999997, 'promoted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'env_changed': 8}
-2026-10-07 23:47:51,804 INFO seed 5 E2: {'n': 8, 'stored_win': 0.08125, 'rerun_win': 0.093125, 'inflation': -0.011874999999999998, 'promoted': 2, 'false_accepts': 1, 'false_accept_rate': 0.5, 'env_changed': 8}
-2026-10-07 23:47:51,809 INFO seed 1 E3: {'n': 8, 'stored_win': 0.113125, 'rerun_win': 0.095625, 'inflation': 0.017499999999999998, 'promoted': 5, 'false_accepts': 3, 'false_accept_rate': 0.6, 'env_changed': 8}
-2026-10-07 23:47:51,809 INFO seed 2 E3: {'n': 8, 'stored_win': 0.1075, 'rerun_win': 0.09875, 'inflation': 0.00875, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 8}
-2026-10-07 23:47:51,809 INFO seed 3 E3: {'n': 8, 'stored_win': 0.08687500000000001, 'rerun_win': 0.080625, 'inflation': 0.00625, 'promoted': 6, 'false_accepts': 1, 'false_accept_rate': 0.16666666666666666, 'env_changed': 8}
-2026-10-07 23:47:51,809 INFO seed 4 E3: {'n': 8, 'stored_win': 0.10187500000000001, 'rerun_win': 0.08687500000000001, 'inflation': 0.015, 'promoted': 4, 'false_accepts': 3, 'false_accept_rate': 0.75, 'env_changed': 8}
-2026-10-07 23:47:51,809 INFO seed 5 E3: {'n': 8, 'stored_win': 0.091875, 'rerun_win': 0.07375, 'inflation': 0.018125000000000002, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 8}
-2026-10-07 23:47:51,814 INFO seed 1 E4: {'n': 8, 'stored_win': 0.120625, 'rerun_win': 0.106875, 'inflation': 0.01375, 'promoted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'env_changed': 8}
-2026-10-07 23:47:51,814 INFO seed 2 E4: {'n': 8, 'stored_win': 0.091875, 'rerun_win': 0.0625, 'inflation': 0.029375000000000002, 'promoted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'env_changed': 8}
-2026-10-07 23:47:51,814 INFO seed 3 E4: {'n': 8, 'stored_win': 0.111875, 'rerun_win': 0.08687500000000001, 'inflation': 0.025, 'promoted': 7, 'false_accepts': 5, 'false_accept_rate': 0.7142857142857143, 'env_changed': 8}
-2026-10-07 23:47:51,814 INFO seed 4 E4: {'n': 8, 'stored_win': 0.09125, 'rerun_win': 0.091875, 'inflation': -0.0006249999999999988, 'promoted': 3, 'false_accepts': 2, 'false_accept_rate': 0.6666666666666666, 'env_changed': 8}
-2026-10-07 23:47:51,814 INFO seed 5 E4: {'n': 8, 'stored_win': 0.09125, 'rerun_win': 0.081875, 'inflation': 0.009374999999999998, 'promoted': 3, 'false_accepts': 2, 'false_accept_rate': 0.6666666666666666, 'env_changed': 8}
-2026-10-07 23:47:51,815 INFO Result table written to results/table4.md
+2026-11-26 05:12:15,156 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-11-26 05:12:15,177 INFO seed 1 E1: {'n': 8, 'stored_win': 0.095, 'rerun_win': 0.09625000000000002, 'inflation': -0.0012499999999999998, 'promoted': 5, 'false_accepts': 2, 'false_accept_rate': 0.4, 'env_changed': 0}
+2026-11-26 05:12:15,178 INFO seed 2 E1: {'n': 8, 'stored_win': 0.098125, 'rerun_win': 0.094375, 'inflation': 0.0037500000000000003, 'promoted': 1, 'false_accepts': 1, 'false_accept_rate': 1.0, 'env_changed': 0}
+2026-11-26 05:12:15,178 INFO seed 3 E1: {'n': 8, 'stored_win': 0.07875, 'rerun_win': 0.08625, 'inflation': -0.0075, 'promoted': 5, 'false_accepts': 1, 'false_accept_rate': 0.2, 'env_changed': 0}
+2026-11-26 05:12:15,178 INFO seed 4 E1: {'n': 8, 'stored_win': 0.09937499999999999, 'rerun_win': 0.09874999999999998, 'inflation': 0.000625, 'promoted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'env_changed': 0}
+2026-11-26 05:12:15,179 INFO seed 5 E1: {'n': 8, 'stored_win': 0.07874999999999999, 'rerun_win': 0.080625, 'inflation': -0.001875, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 0}
+2026-11-26 05:12:15,182 INFO seed 1 E2: {'n': 8, 'stored_win': 0.101875, 'rerun_win': 0.12437499999999999, 'inflation': -0.022500000000000003, 'promoted': 3, 'false_accepts': 1, 'false_accept_rate': 0.3333333333333333, 'env_changed': 8}
+2026-11-26 05:12:15,182 INFO seed 2 E2: {'n': 8, 'stored_win': 0.085, 'rerun_win': 0.0675, 'inflation': 0.0175, 'promoted': 0, 'false_accepts': 0, 'false_accept_rate': None, 'env_changed': 8}
+2026-11-26 05:12:15,183 INFO seed 3 E2: {'n': 8, 'stored_win': 0.10062499999999999, 'rerun_win': 0.09687499999999999, 'inflation': 0.0037500000000000003, 'promoted': 5, 'false_accepts': 3, 'false_accept_rate': 0.6, 'env_changed': 8}
+2026-11-26 05:12:15,183 INFO seed 4 E2: {'n': 8, 'stored_win': 0.08812500000000001, 'rerun_win': 0.10437499999999998, 'inflation': -0.01625, 'promoted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'env_changed': 8}
+2026-11-26 05:12:15,183 INFO seed 5 E2: {'n': 8, 'stored_win': 0.08125, 'rerun_win': 0.09312499999999999, 'inflation': -0.011875, 'promoted': 2, 'false_accepts': 1, 'false_accept_rate': 0.5, 'env_changed': 8}
+2026-11-26 05:12:15,186 INFO seed 1 E3: {'n': 8, 'stored_win': 0.113125, 'rerun_win': 0.095625, 'inflation': 0.0175, 'promoted': 5, 'false_accepts': 3, 'false_accept_rate': 0.6, 'env_changed': 8}
+2026-11-26 05:12:15,187 INFO seed 2 E3: {'n': 8, 'stored_win': 0.1075, 'rerun_win': 0.09875, 'inflation': 0.008749999999999999, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 8}
+2026-11-26 05:12:15,187 INFO seed 3 E3: {'n': 8, 'stored_win': 0.086875, 'rerun_win': 0.080625, 'inflation': 0.00625, 'promoted': 6, 'false_accepts': 1, 'false_accept_rate': 0.16666666666666666, 'env_changed': 8}
+2026-11-26 05:12:15,187 INFO seed 4 E3: {'n': 8, 'stored_win': 0.101875, 'rerun_win': 0.08687500000000001, 'inflation': 0.015000000000000001, 'promoted': 4, 'false_accepts': 3, 'false_accept_rate': 0.75, 'env_changed': 8}
+2026-11-26 05:12:15,188 INFO seed 5 E3: {'n': 8, 'stored_win': 0.09187499999999998, 'rerun_win': 0.07375000000000001, 'inflation': 0.018125000000000002, 'promoted': 2, 'false_accepts': 2, 'false_accept_rate': 1.0, 'env_changed': 8}
+2026-11-26 05:12:15,191 INFO seed 1 E4: {'n': 8, 'stored_win': 0.12062500000000001, 'rerun_win': 0.106875, 'inflation': 0.01375, 'promoted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'env_changed': 8}
+2026-11-26 05:12:15,191 INFO seed 2 E4: {'n': 8, 'stored_win': 0.091875, 'rerun_win': 0.0625, 'inflation': 0.029375000000000005, 'promoted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'env_changed': 8}
+2026-11-26 05:12:15,192 INFO seed 3 E4: {'n': 8, 'stored_win': 0.11187499999999999, 'rerun_win': 0.086875, 'inflation': 0.024999999999999998, 'promoted': 7, 'false_accepts': 5, 'false_accept_rate': 0.7142857142857143, 'env_changed': 8}
+2026-11-26 05:12:15,192 INFO seed 4 E4: {'n': 8, 'stored_win': 0.09125, 'rerun_win': 0.091875, 'inflation': -0.0006250000000000006, 'promoted': 3, 'false_accepts': 2, 'false_accept_rate': 0.6666666666666666, 'env_changed': 8}
+2026-11-26 05:12:15,193 INFO seed 5 E4: {'n': 8, 'stored_win': 0.09125000000000001, 'rerun_win': 0.081875, 'inflation': 0.009375000000000001, 'promoted': 3, 'false_accepts': 2, 'false_accept_rate': 0.6666666666666666, 'env_changed': 8}
+2026-11-26 05:12:15,194 INFO Result table written to results/table4.md
 **Table 4. Environment-drift inflation**
 
 | Environment condition | Reference age (rounds) | Stored-reference win rate (%) | Rerun-reference win rate (%) | Drift inflation (percentage points) |
 | :- | :- | :- | :- | :- |
-| Unchanged | 3 | 9.00 ± 1.04 | 9.12 ± 0.76 | -0.13 ± 0.41 |
+| Unchanged | 3 | 9.00 ± 1.04 | 9.12 ± 0.76 | -0.12 ± 0.41 |
 | Decoding change | 3 | 9.14 ± 0.93 | 9.72 ± 2.05 | -0.59 ± 1.63 |
 | Extraction change | 3 | 10.03 ± 1.08 | 8.71 ± 1.04 | 1.31 ± 0.53 |
 | Multiple changes | 3 | 10.14 ± 1.39 | 8.60 ± 1.61 | 1.54 ± 1.21 |
@@ -32,5 +32,4 @@
 - Drift inflation = stored-reference win rate − rerun-reference win rate.
 - Each cell averages all candidate/reference pairs 3 rounds apart, then mean ± sd over seeds.
 - The reference is the prompt snapshot from 3 rounds earlier. 'Stored' scores that prompt's E1 outputs from the measurement step (labels kept as recorded, 'as_recorded'); 'rerun' regenerates the same prompt under the current environment in a separate pass. It is not the exact output produced during the trajectory.
-
 

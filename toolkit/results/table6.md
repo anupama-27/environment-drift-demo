@@ -12,4 +12,3 @@
 - Denominators are small: reclassifying one accept moves environment-triggered refresh by 6.2 pp, and the intervals overlap, so the ordering is a direction rather than an established gap.
 - Table 7's stale-reference, changed-environment rate covers a subset of these accepts, not the same quantity.
 - A policy lowers this rate by accepting less; results/table6_errors.md adds the improvements each one rejected.
-

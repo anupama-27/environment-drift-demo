@@ -9,4 +9,3 @@
 
 - Environment is the one in force when the candidate was proposed, not a condition applied afterwards, so the rows are not balanced in size.
 - Most candidates are worse than the incumbent they came from. That is the base rate a refresh policy has to work against in Table 6.
-

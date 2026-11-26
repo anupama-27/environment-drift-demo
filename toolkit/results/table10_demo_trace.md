@@ -17,4 +17,3 @@
 - Reproducible with: DRIFT_SEEDS=1,2,3,4,5 python table10.py (and python -m unittest tests.test_demo_backend -v).
 - Traces all 11 rounds of Seed 1 across environment shifts E1 (r0–3) -> E2 (r4–7) -> E4 (r8–10).
 - Demonstrates how P1 accumulates 4 false accepts (C4, C7, C10, C11) and ends at 69.0% GT accuracy, P2 avoids late false accepts but suffers 5 false rejects (ending on C5 at 67.0% in 6,611 calls), and P3 refreshes only at the r=4 (E1->E2) and r=8 (E2->E4) transitions to finish on C9 at 73.0% GT accuracy with 0 false accepts in 4,811 calls.
-

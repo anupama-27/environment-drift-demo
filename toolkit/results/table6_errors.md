@@ -9,4 +9,3 @@
 - False reject = a candidate with strictly higher ground-truth accuracy that the gate turned down; the rate is over rejected candidates.
 - Total error rate is over all candidates evaluated, so the two directions are comparable on one denominator.
 - A policy can lower its false-accept rate simply by accepting less, so the false-reject column is needed to tell caution apart from accuracy.
-

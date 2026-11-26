@@ -3,7 +3,7 @@
 Verifies each of the 8 proposal components by invoking its backend implementation on saved post-fix
 run data (Seed 1 and 5-seed pool), running the unit/integration test suite in tests/test_demo_backend.py,
 and generating a reproducible end-to-end CLI demonstration trace (results/table10_demo_trace.md).
-The interactive web UI layer remains pending; this deliverable is a verified backend prototype.
+The interactive replay (index.html and app.js at the repository root) reads the files written by export_replay.py.
 """
 import unittest
 
@@ -82,28 +82,28 @@ c8_out = f"SHA-1 key={k_sample[:10]}...; 5-seed runs JSON + logs/table{{3,4,5,6,
 components = [
     ("Reference manager", "drift/pipeline.py:Runner.run, drift/analysis.py:RunView.stored",
      "test_01_reference_manager", "Accepted prompts -> stores per-round snapshot & labels",
-     c1_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c1_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Environment version tracker", "drift/envs.py:ENVS, env_at, map_schedule",
      "test_02_environment_version_tracker", "Schedule E1–E4 -> tracks active decoding & extractor",
-     c2_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c2_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Reference rerun mechanism", "drift/pipeline.py:Runner.outputs, drift/analysis.py:RunView.rerun",
      "test_03_reference_rerun_mechanism", "Stored reference + current env -> shuffled-batch fresh pass",
-     c3_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c3_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Candidate comparison view", "drift/analysis.py:pair, win_rate, pair_measure",
      "test_04_candidate_comparison_view", "Candidate & reference labels -> paired W/L/T & inflation",
-     c4_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c4_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Ground-truth evaluation panel", "drift/extract.py:extract_v1, extract_v2, is_correct; candidate_truth",
      "test_05_ground_truth_evaluation_panel", "Model outputs & GSM8K gold -> exact match & delta_pp",
-     c5_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c5_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("False-accept and drift dashboard", "drift/analysis.py:simulate(with_records=True), summarise",
      "test_06_false_accept_and_drift_dashboard", "Promotion trace -> flags accepts with delta_pp <= 0",
-     c6_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c6_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Refresh-policy comparison", "drift/analysis.py:POLICIES, simulate",
      "test_07_refresh_policy_comparison", "Candidate pool -> replays P1, P2, P3 on identical pool",
-     c7_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c7_out, "Backend verified (CLI/API); shown in the interactive replay"),
     ("Reproducibility / experiment logs", "drift/model.py:Cache, generation_key; drift/report.py:write_table",
      "test_08_reproducibility_and_experiment_logs", "Seed & config -> caches generations & writes logs/tables",
-     c8_out, "Backend prototype verified (CLI/API); web UI pending"),
+     c8_out, "Backend verified (CLI/API); shown in the interactive replay"),
 ]
 
 for row in components:
@@ -116,8 +116,8 @@ write_table(
      "Input -> System operation", "Verified output (Seed 1 run)", "Deliverable status"],
     components,
     notes=[
-        "Deliverable framing: the current artifact is a verified CLI/API backend prototype; the interactive web UI "
-        "layer remains pending and is not claimed as complete.",
+        "Every component is verified through its CLI/API backend; the interactive replay at the repository root "
+        "presents the same results from the files written by export_replay.py.",
         f"Every row is verified by executing its backend callable on saved post-fix data (Seed 1) and running "
         f"the automated unit/integration test suite in tests/test_demo_backend.py ({test_result.testsRun}/{test_result.testsRun} tests passing).",
         "A companion end-to-end reproducible demonstration trace showing round-by-round inputs, paired W/L counts, "

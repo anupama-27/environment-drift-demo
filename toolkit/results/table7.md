@@ -22,4 +22,3 @@
 - At age 0 Unchanged that rule is identical to the ground-truth check, so 0.0% is arithmetic rather than a finding, and small ages are pulled down for the same reason. The two false-accept columns are like-for-like only where the reference is no longer the incumbent.
 - The last column repeats the rule after re-running the same aged prompt under the current environment, so it prices a refresh.
 - Not comparable with Table 6's rates. A row here is a never-refresh rule at one fixed age over every candidate it can reach, so the matching Table 6 row is frozen reference, 38.2% (13/34), not environment-triggered refresh, 12.5% (2/16).
-

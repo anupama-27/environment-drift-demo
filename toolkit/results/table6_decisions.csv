@@ -164,4 +164,3 @@ seed,policy,cid,round,env,ref_env,ref_fresh,wins,losses,accepted,inc_acc,cand_ac
 5,P3,C9,8,E4,E4,True,15,25,False,0.75,0.695,-5.500000000000005,worse,False,False
 5,P3,C10,9,E4,E4,True,13,18,False,0.75,0.72,-3.0000000000000027,worse,False,False
 5,P3,C11,10,E4,E4,True,15,27,False,0.75,0.685,-6.499999999999995,worse,False,False
-

@@ -43,6 +43,6 @@ def write_table(table_no, title, headers, rows, notes=(), suffix=""):
     with open(path, "w") as f:
         f.write(text)
     log = logging.getLogger(f"table{table_no}")
-    log.info("Result table written to %s\n%s", path, text)
+    log.info("Result table written to %s\n%s", os.path.relpath(path, config.ROOT), text)
     return text
 

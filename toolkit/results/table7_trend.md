@@ -17,4 +17,3 @@
 - Every row uses the same candidates, those proposed from round 5 on (30 pairs), so the only thing changing down a block is the age of the reference. The main table cannot do this, because higher ages there bring in later candidates as well as older references.
 - The paired row subtracts each seed's youngest-age inflation from its oldest, so a trend that holds within every seed shows up as a column of same-signed numbers rather than as a difference of two noisy means.
 - Seeds with the mean's sign counts how many seeds agree with the direction of their own row. With five seeds a 5/5 column is the strongest evidence this design can give that the trend is systematic rather than an artefact of one seed.
-

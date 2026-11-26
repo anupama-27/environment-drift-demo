@@ -1,6 +1,6 @@
-2026-10-22 14:02:11,947 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
-2026-10-22 14:02:11,951 INFO 55 candidates over 5 seeds
-2026-10-22 14:02:11,953 INFO Result table written to results/table5.md
+2026-11-26 05:12:15,200 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-11-26 05:12:15,219 INFO 55 candidates over 5 seeds
+2026-11-26 05:12:15,221 INFO Result table written to results/table5.md
 **Table 5. Ground-truth evaluation of candidate prompts**
 
 | Candidate ID | Seed | Round | Environment | Incumbent accuracy (%) | Candidate accuracy (%) | Accuracy change (pp) | Ground-truth outcome |
@@ -70,7 +70,7 @@
 - Selection and reporting both use the same 200 items.
 - Per-environment scores and the gate's wins, losses and decisions are in results/table5_crossenv.md and results/table5.csv.
 
-2026-10-22 14:02:11,954 INFO Result table written to results/table5_example.md
+2026-11-26 05:12:15,223 INFO Result table written to results/table5_example.md
 **Table 5. Ground-truth evaluation of candidate prompts (illustrative subset)**
 
 | Candidate ID | Seed | Round | Environment | Incumbent accuracy (%) | Candidate accuracy (%) | Accuracy change (pp) | Ground-truth outcome |
@@ -92,7 +92,7 @@
 - It also moves with no accept in 5 rows, where the environment changed and the same prompt was re-measured. Example: on seed 1 the incumbent reads 69.5% at C4 and 62.0% at C5 with no accept in between.
 - 'Improved' means strictly higher accuracy, so one extra correct item (0.5 pp) counts. Table 6 calls an accept false when this column is not 'improved'.
 
-2026-10-22 14:02:11,955 INFO Result table written to results/table5_summary.md
+2026-11-26 05:12:15,224 INFO Result table written to results/table5_summary.md
 **Table 5. Candidate quality by environment condition**
 
 | Environment at proposal | Candidates | Improved | No change | Worse | Improved (%) | Mean accuracy change (pp) |
@@ -105,7 +105,7 @@
 - Environment is the one in force when the candidate was proposed, not a condition applied afterwards, so the rows are not balanced in size.
 - Most candidates are worse than the incumbent they came from. That is the base rate a refresh policy has to work against in Table 6.
 
-2026-10-22 14:02:11,955 INFO Result table written to results/table5_crossenv.md
+2026-11-26 05:12:15,225 INFO Result table written to results/table5_crossenv.md
 **Table 5. The same candidates judged under every environment**
 
 | Environment | ID | Candidates | Improved | No change | Worse | Improved (%) | Mean accuracy change (pp) |
@@ -120,5 +120,4 @@
 - E1 and E3 differ only in the answer extractor, and 18 of 55 candidates (32.7%) still change verdict between them. The widest is seed 1 C1: -9.0 pp under E1 and +4.0 pp under E3, same prompt and same responses. Reading the answer out of an unchanged response is enough to flip a promotion decision, which is why the parser audit in Table 2 matters for every number downstream.
 - Unlike the main table, these columns are not a restatement of the gate's wins and losses, because the gate only ever saw the environment in force at the round.
 
-2026-10-22 14:02:11,956 INFO Per-candidate detail written to results/table5.csv
-
+2026-11-26 05:12:15,228 INFO Per-candidate detail written to results/table5.csv

@@ -1,20 +1,20 @@
-2026-10-22 14:02:11,958 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
-2026-10-22 14:02:11,967 INFO seed 1 P1: evaluated=11 accepted=7 false_accepts=4 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 2 P1: evaluated=11 accepted=7 false_accepts=3 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 3 P1: evaluated=11 accepted=7 false_accepts=2 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 4 P1: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 5 P1: evaluated=11 accepted=8 false_accepts=4 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 1 P2: evaluated=11 accepted=2 false_accepts=0 false_rejects=5
-2026-10-22 14:02:11,967 INFO seed 2 P2: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
-2026-10-22 14:02:11,967 INFO seed 3 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 4 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=2
-2026-10-22 14:02:11,967 INFO seed 5 P2: evaluated=11 accepted=2 false_accepts=1 false_rejects=2
-2026-10-22 14:02:11,967 INFO seed 1 P3: evaluated=11 accepted=4 false_accepts=0 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 2 P3: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
-2026-10-22 14:02:11,967 INFO seed 3 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 4 P3: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
-2026-10-22 14:02:11,967 INFO seed 5 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
-2026-10-22 14:02:11,969 INFO Result table written to results/table6.md
+2026-11-26 05:12:15,231 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-11-26 05:12:15,272 INFO seed 1 P1: evaluated=11 accepted=7 false_accepts=4 false_rejects=0
+2026-11-26 05:12:15,273 INFO seed 2 P1: evaluated=11 accepted=7 false_accepts=3 false_rejects=0
+2026-11-26 05:12:15,273 INFO seed 3 P1: evaluated=11 accepted=7 false_accepts=2 false_rejects=0
+2026-11-26 05:12:15,274 INFO seed 4 P1: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
+2026-11-26 05:12:15,274 INFO seed 5 P1: evaluated=11 accepted=8 false_accepts=4 false_rejects=0
+2026-11-26 05:12:15,274 INFO seed 1 P2: evaluated=11 accepted=2 false_accepts=0 false_rejects=5
+2026-11-26 05:12:15,275 INFO seed 2 P2: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
+2026-11-26 05:12:15,275 INFO seed 3 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=0
+2026-11-26 05:12:15,275 INFO seed 4 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=2
+2026-11-26 05:12:15,275 INFO seed 5 P2: evaluated=11 accepted=2 false_accepts=1 false_rejects=2
+2026-11-26 05:12:15,276 INFO seed 1 P3: evaluated=11 accepted=4 false_accepts=0 false_rejects=0
+2026-11-26 05:12:15,276 INFO seed 2 P3: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
+2026-11-26 05:12:15,276 INFO seed 3 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
+2026-11-26 05:12:15,277 INFO seed 4 P3: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
+2026-11-26 05:12:15,277 INFO seed 5 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
+2026-11-26 05:12:15,279 INFO Result table written to results/table6.md
 **Table 6. False-accept analysis**
 
 | Refresh policy | Candidates evaluated | Candidates accepted | Accepted candidates with no ground-truth improvement | False-accept rate, pooled (%) | False-accept rate, per-seed mean ± sd (%) | 95% CI of the seed-mean (pp) |
@@ -30,7 +30,7 @@
 - Table 7's stale-reference, changed-environment rate covers a subset of these accepts, not the same quantity.
 - A policy lowers this rate by accepting less; results/table6_errors.md adds the improvements each one rejected.
 
-2026-10-22 14:02:11,969 INFO Result table written to results/table6_errors.md
+2026-11-26 05:12:15,281 INFO Result table written to results/table6_errors.md
 **Table 6. Decision errors in both directions**
 
 | Policy | Evaluated | Accepted | False accepts | False-accept rate (%) | False rejects | False-reject rate (%) | Total error rate (%) | False-accept rate, per-seed mean ± sd (%) |
@@ -43,5 +43,4 @@
 - Total error rate is over all candidates evaluated, so the two directions are comparable on one denominator.
 - A policy can lower its false-accept rate simply by accepting less, so the false-reject column is needed to tell caution apart from accuracy.
 
-2026-10-22 14:02:11,971 INFO Per-decision detail written to results/table6_decisions.csv
-
+2026-11-26 05:12:15,284 INFO Per-decision detail written to results/table6_decisions.csv

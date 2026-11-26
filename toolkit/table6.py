@@ -101,5 +101,5 @@ with open(csv_path, "w", newline="") as f:
     for p in POLICIES:
         for r in results[p]:
             w.writerows({k: rec[k] for k in cols} for rec in r["records"])
-log.info("Per-decision detail written to %s", csv_path)
+log.info("Per-decision detail written to %s", os.path.relpath(csv_path, config.ROOT))
 

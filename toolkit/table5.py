@@ -162,5 +162,5 @@ with open(csv_path, "w", newline="") as f:
             "wins": r["wins"], "losses": r["losses"], "accepted": r["accepted"], "note": r["note"],
             **{f"delta_{e}": round(r[f"delta_{e}"], 1) for e in envs},
         })
-log.info("Per-candidate detail written to %s", csv_path)
+log.info("Per-candidate detail written to %s", os.path.relpath(csv_path, config.ROOT))
 

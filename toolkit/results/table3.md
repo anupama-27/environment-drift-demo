@@ -10,4 +10,3 @@
 - Model calls are logical (estimated) counts: simulate() is a dry run, so it adds up the proposals, dev passes, candidate evaluations and refreshes each policy would need.
 - The policies are reference-management rules compared on the same candidate pool, not different ways of improving accuracy; accuracy is capped by the best candidate in the pool.
 - Policies replay the same candidate pool in dry-run mode.
-

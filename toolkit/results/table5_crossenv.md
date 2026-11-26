@@ -11,4 +11,3 @@
 - 31 of 55 candidates (56.4%) get a different verdict under E1 than under E4. That disagreement is what Table 6 turns into a false-accept rate.
 - E1 and E3 differ only in the answer extractor, and 18 of 55 candidates (32.7%) still change verdict between them. The widest is seed 1 C1: -9.0 pp under E1 and +4.0 pp under E3, same prompt and same responses. Reading the answer out of an unchanged response is enough to flip a promotion decision, which is why the parser audit in Table 2 matters for every number downstream.
 - Unlike the main table, these columns are not a restatement of the gate's wins and losses, because the gate only ever saw the environment in force at the round.
-

@@ -66,4 +66,3 @@
 - 2 candidates (seed 1 C7, seed 4 C1) are the incumbent copied verbatim, because the proposer's own output could not be parsed. They score 0.0 pp by construction.
 - Selection and reporting both use the same 200 items.
 - Per-environment scores and the gate's wins, losses and decisions are in results/table5_crossenv.md and results/table5.csv.
-

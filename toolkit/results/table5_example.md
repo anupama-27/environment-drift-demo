@@ -18,4 +18,3 @@
 - Rows are sequential rounds within a seed. The incumbent changes only when a candidate is accepted, so consecutive rows often share one incumbent accuracy.
 - It also moves with no accept in 5 rows, where the environment changed and the same prompt was re-measured. Example: on seed 1 the incumbent reads 69.5% at C4 and 62.0% at C5 with no accept in between.
 - 'Improved' means strictly higher accuracy, so one extra correct item (0.5 pp) counts. Table 6 calls an accept false when this column is not 'improved'.
-
