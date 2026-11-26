@@ -1,0 +1,56 @@
+seed,cid,round,env,inc_acc_pct,cand_acc_pct,delta_pp,outcome,wins,losses,accepted,note,delta_E1,delta_E2,delta_E3,delta_E4
+1,C1,0,E1,68.0,59.0,-9.0,worse,25,43,False,format_line_added,-9.0,-15.5,4.0,0.0
+1,C2,1,E1,68.0,69.5,1.5,improved,26,23,True,format_line_added,1.5,-5.5,3.5,0.0
+1,C3,2,E1,69.5,45.5,-24.0,worse,14,62,False,format_line_added,-24.0,-16.0,-7.5,0.0
+1,C4,3,E1,69.5,69.5,0.0,no change,25,25,False,format_line_added,0.0,8.5,-0.5,4.0
+1,C5,4,E2,62.0,66.0,4.0,improved,33,25,True,format_line_added,2.5,4.0,-1.5,-2.5
+1,C6,5,E2,66.0,71.0,5.0,improved,17,7,True,ok,1.0,5.0,1.5,5.0
+1,C7,6,E2,71.0,71.0,0.0,no change,0,0,False,fallback_unparsed,0.0,0.0,0.0,0.0
+1,C8,7,E2,71.0,27.5,-43.5,worse,10,97,False,ok,-48.5,-43.5,-6.5,-4.5
+1,C9,8,E4,72.0,73.0,1.0,improved,18,16,True,ok,0.5,0.5,2.0,1.0
+1,C10,9,E4,73.0,71.0,-2.0,worse,13,17,False,ok,-3.5,-1.5,-5.0,-2.0
+1,C11,10,E4,73.0,69.0,-4.0,worse,14,22,False,ok,-6.5,-3.5,-8.0,-4.0
+2,C1,0,E1,68.0,73.5,5.5,improved,27,16,True,format_line_added,5.5,-5.0,3.0,-5.0
+2,C2,1,E1,73.5,69.0,-4.5,worse,20,29,False,ok,-4.5,-3.5,-1.5,-0.5
+2,C3,2,E1,73.5,70.0,-3.5,worse,19,26,False,ok,-3.5,1.5,-2.0,4.0
+2,C4,3,E1,73.5,69.5,-4.0,worse,17,25,False,format_line_added,-4.0,-3.0,0.0,2.5
+2,C5,4,E2,69.0,39.5,-29.5,worse,11,70,False,format_line_added,-27.5,-29.5,-6.5,-11.0
+2,C6,5,E2,69.0,71.5,2.5,improved,21,16,True,format_line_added,-1.0,2.5,0.0,4.0
+2,C7,6,E2,71.5,63.5,-8.0,worse,17,33,False,format_line_added,-6.0,-8.0,-3.0,-2.5
+2,C8,7,E2,71.5,67.0,-4.5,worse,17,26,False,format_line_added,-0.5,-4.5,0.0,-4.5
+2,C9,8,E4,73.0,67.5,-5.5,worse,15,26,False,format_line_added,0.5,-4.0,-0.5,-5.5
+2,C10,9,E4,73.0,68.5,-4.5,worse,13,22,False,format_line_added,-0.5,-3.0,-1.0,-4.5
+2,C11,10,E4,73.0,71.0,-2.0,worse,16,20,False,ok,0.0,-0.5,-0.5,-2.0
+3,C1,0,E1,68.0,64.0,-4.0,worse,14,22,False,format_line_added,-4.0,-1.0,2.5,2.5
+3,C2,1,E1,68.0,65.5,-2.5,worse,15,20,False,format_line_added,-2.5,-3.0,0.0,1.0
+3,C3,2,E1,68.0,65.5,-2.5,worse,16,21,False,ok,-2.5,-1.0,2.0,1.5
+3,C4,3,E1,68.0,48.0,-20.0,worse,13,53,False,format_line_added,-20.0,-12.5,-7.5,0.0
+3,C5,4,E2,68.0,69.0,1.0,improved,15,13,True,ok,1.5,1.0,1.0,1.0
+3,C6,5,E2,69.0,73.0,4.0,improved,27,19,True,format_line_added,-1.0,4.0,-3.0,1.5
+3,C7,6,E2,73.0,69.0,-4.0,worse,19,27,False,ok,-1.0,-4.0,2.5,-1.0
+3,C8,7,E2,73.0,71.5,-1.5,worse,18,21,False,ok,3.5,-1.5,3.5,-0.5
+3,C9,8,E4,73.0,69.0,-4.0,worse,12,20,False,ok,1.5,-4.5,1.5,-4.0
+3,C10,9,E4,73.0,69.5,-3.5,worse,15,22,False,format_line_added,4.0,-5.5,5.5,-3.5
+3,C11,10,E4,73.0,73.0,0.0,no change,0,0,False,ok,0.0,0.0,0.0,0.0
+4,C1,0,E1,68.0,68.0,0.0,no change,0,0,False,fallback_unparsed,0.0,0.0,0.0,0.0
+4,C2,1,E1,68.0,4.0,-64.0,worse,1,129,False,ok,-64.0,-60.5,-11.0,-8.0
+4,C3,2,E1,68.0,60.0,-8.0,worse,19,35,False,ok,-8.0,-7.5,-1.5,0.0
+4,C4,3,E1,68.0,72.5,4.5,improved,21,12,True,format_line_added,4.5,-1.0,3.5,-1.0
+4,C5,4,E2,66.5,66.0,-0.5,worse,23,24,False,format_line_added,-2.5,-0.5,-1.5,2.0
+4,C6,5,E2,66.5,69.0,2.5,improved,27,22,True,format_line_added,0.5,2.5,-0.5,0.0
+4,C7,6,E2,69.0,66.0,-3.0,worse,8,14,False,format_line_added,0.5,-3.0,0.0,-3.0
+4,C8,7,E2,69.0,64.0,-5.0,worse,12,22,False,format_line_added,-2.5,-5.0,-2.5,-4.5
+4,C9,8,E4,69.0,70.0,1.0,improved,15,13,True,format_line_added,-1.5,1.0,-2.0,1.0
+4,C10,9,E4,70.0,72.0,2.0,improved,8,4,True,ok,0.5,2.0,0.5,2.0
+4,C11,10,E4,72.0,72.5,0.5,improved,16,15,True,format_line_added,-1.0,0.0,-1.0,0.5
+5,C1,0,E1,68.0,63.0,-5.0,worse,20,30,False,format_line_added,-5.0,-8.5,5.0,-1.0
+5,C2,1,E1,68.0,47.5,-20.5,worse,16,57,False,format_line_added,-20.5,-22.5,-4.0,-5.5
+5,C3,2,E1,68.0,74.0,6.0,improved,22,10,True,format_line_added,6.0,-2.0,5.5,-2.0
+5,C4,3,E1,74.0,70.0,-4.0,worse,17,25,False,ok,-4.0,1.0,-4.0,-0.5
+5,C5,4,E2,69.5,49.0,-20.5,worse,9,50,False,ok,-22.0,-20.5,-9.0,-5.5
+5,C6,5,E2,69.5,68.5,-1.0,worse,16,18,False,ok,-4.5,-1.0,-3.0,-0.5
+5,C7,6,E2,69.5,69.0,-0.5,worse,19,20,False,format_line_added,-1.0,-0.5,-2.5,-2.5
+5,C8,7,E2,69.5,72.0,2.5,improved,20,15,True,ok,-7.5,2.5,-2.5,3.0
+5,C9,8,E4,75.0,69.5,-5.5,worse,12,23,False,format_line_added,5.0,-4.0,-2.0,-5.5
+5,C10,9,E4,75.0,72.0,-3.0,worse,13,19,False,ok,2.5,0.0,-3.0,-3.0
+5,C11,10,E4,75.0,68.5,-6.5,worse,11,24,False,ok,4.5,-4.0,-2.5,-6.5

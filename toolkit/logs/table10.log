@@ -1,0 +1,49 @@
+2026-11-26 05:12:15,425 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-11-26 05:12:15,473 INFO All 9 unit/integration tests in tests/test_demo_backend.py passed.
+2026-11-26 05:12:15,483 INFO Reference manager | callable=drift/pipeline.py:Runner.run, drift/analysis.py:RunView.stored | test=test_01_reference_manager | verified_out=11 round snapshots; h0 E1 stored acc = 68.0% (n=200) | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,483 INFO Environment version tracker | callable=drift/envs.py:ENVS, env_at, map_schedule | test=test_02_environment_version_tracker | verified_out=Schedule r0..3=E1, r4..7=E2, r8..10=E4; A2 mapped={0: 'E1', 4: 'E1', 8: 'E3'} | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,484 INFO Reference rerun mechanism | callable=drift/pipeline.py:Runner.outputs, drift/analysis.py:RunView.rerun | test=test_03_reference_rerun_mechanism | verified_out=h0 stored(E1)=68.0% vs fresh rerun(E4)=69.0% (n=200) | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,484 INFO Candidate comparison view | callable=drift/analysis.py:pair, win_rate, pair_measure | test=test_04_candidate_comparison_view | verified_out=Seed 1 C11 vs h0(E1) under E4: W24/L22, stored_win=12.0%, rerun_win=10.5%, inflation=+1.50 pp | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,484 INFO Ground-truth evaluation panel | callable=drift/extract.py:extract_v1, extract_v2, is_correct; candidate_truth | test=test_05_ground_truth_evaluation_panel | verified_out=Seed 1: 4/11 candidates improved (C2 +1.5pp, C5 +4.0pp, C6 +5.0pp, C9 +1.0pp) | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,485 INFO False-accept and drift dashboard | callable=drift/analysis.py:simulate(with_records=True), summarise | test=test_06_false_accept_and_drift_dashboard | verified_out=Seed 1 P1: 4/7 false accepts (C4, C7, C10, C11), mean inflation=-1.09 pp | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,485 INFO Refresh-policy comparison | callable=drift/analysis.py:POLICIES, simulate | test=test_07_refresh_policy_comparison | verified_out=Seed 1 final acc / FA / calls: P1=69.0% (4/7, 4411), P2=67.0% (0/2, 6611), P3=73.0% (0/4, 4811) | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,485 INFO Reproducibility / experiment logs | callable=drift/model.py:Cache, generation_key; drift/report.py:write_table | test=test_08_reproducibility_and_experiment_logs | verified_out=SHA-1 key=44a05aebec...; 5-seed runs JSON + logs/table{3,4,5,6,8,9,10}.log verified | status=Backend verified (CLI/API); shown in the interactive replay
+2026-11-26 05:12:15,487 INFO Result table written to results/table10.md
+**Table 10. System demonstration backend prototype: component coverage, callable verification, and implementation status**
+
+| Demonstration component | Backend callable (module:symbol) | Verification test (tests/test_demo_backend.py) | Input -> System operation | Verified output (Seed 1 run) | Deliverable status |
+| :- | :- | :- | :- | :- | :- |
+| Reference manager | drift/pipeline.py:Runner.run, drift/analysis.py:RunView.stored | test_01_reference_manager | Accepted prompts -> stores per-round snapshot & labels | 11 round snapshots; h0 E1 stored acc = 68.0% (n=200) | Backend verified (CLI/API); shown in the interactive replay |
+| Environment version tracker | drift/envs.py:ENVS, env_at, map_schedule | test_02_environment_version_tracker | Schedule E1–E4 -> tracks active decoding & extractor | Schedule r0..3=E1, r4..7=E2, r8..10=E4; A2 mapped={0: 'E1', 4: 'E1', 8: 'E3'} | Backend verified (CLI/API); shown in the interactive replay |
+| Reference rerun mechanism | drift/pipeline.py:Runner.outputs, drift/analysis.py:RunView.rerun | test_03_reference_rerun_mechanism | Stored reference + current env -> shuffled-batch fresh pass | h0 stored(E1)=68.0% vs fresh rerun(E4)=69.0% (n=200) | Backend verified (CLI/API); shown in the interactive replay |
+| Candidate comparison view | drift/analysis.py:pair, win_rate, pair_measure | test_04_candidate_comparison_view | Candidate & reference labels -> paired W/L/T & inflation | Seed 1 C11 vs h0(E1) under E4: W24/L22, stored_win=12.0%, rerun_win=10.5%, inflation=+1.50 pp | Backend verified (CLI/API); shown in the interactive replay |
+| Ground-truth evaluation panel | drift/extract.py:extract_v1, extract_v2, is_correct; candidate_truth | test_05_ground_truth_evaluation_panel | Model outputs & GSM8K gold -> exact match & delta_pp | Seed 1: 4/11 candidates improved (C2 +1.5pp, C5 +4.0pp, C6 +5.0pp, C9 +1.0pp) | Backend verified (CLI/API); shown in the interactive replay |
+| False-accept and drift dashboard | drift/analysis.py:simulate(with_records=True), summarise | test_06_false_accept_and_drift_dashboard | Promotion trace -> flags accepts with delta_pp <= 0 | Seed 1 P1: 4/7 false accepts (C4, C7, C10, C11), mean inflation=-1.09 pp | Backend verified (CLI/API); shown in the interactive replay |
+| Refresh-policy comparison | drift/analysis.py:POLICIES, simulate | test_07_refresh_policy_comparison | Candidate pool -> replays P1, P2, P3 on identical pool | Seed 1 final acc / FA / calls: P1=69.0% (4/7, 4411), P2=67.0% (0/2, 6611), P3=73.0% (0/4, 4811) | Backend verified (CLI/API); shown in the interactive replay |
+| Reproducibility / experiment logs | drift/model.py:Cache, generation_key; drift/report.py:write_table | test_08_reproducibility_and_experiment_logs | Seed & config -> caches generations & writes logs/tables | SHA-1 key=44a05aebec...; 5-seed runs JSON + logs/table{3,4,5,6,8,9,10}.log verified | Backend verified (CLI/API); shown in the interactive replay |
+
+- Every component is verified through its CLI/API backend; the interactive replay at the repository root presents the same results from the files written by export_replay.py.
+- Every row is verified by executing its backend callable on saved post-fix data (Seed 1) and running the automated unit/integration test suite in tests/test_demo_backend.py (9/9 tests passing).
+- A companion end-to-end reproducible demonstration trace showing round-by-round inputs, paired W/L counts, drift inflation, and P1/P2/P3 promotion decisions on Seed 1 is written to results/table10_demo_trace.md.
+
+2026-11-26 05:12:15,490 INFO Result table written to results/table10_demo_trace.md
+**Table 10. End-to-end reproducible backend demonstration trace (Seed 1, Rounds 0–10 across P1, P2, P3)**
+
+| Round | Candidate | Active env | Candidate GT acc (%) | P1 drift inflation vs rerun (pp) | P1 (Frozen ref) decision | P2 (Per-batch refresh) decision | P3 (Env-triggered refresh) decision |
+| :- | :- | :- | :- | :- | :- | :- | :- |
+| 0 | C1 | E1 | 59.0% | -1.00 | ref=h0(E1,stored): W25/L43 -> reject (vs h0: -9.0pp, inc=h0) | ref=h0(E1,fresh): W27/L42 -> reject (vs h0: -9.0pp, inc=h0) | ref=h0(E1,stored): W25/L43 -> reject (vs h0: -9.0pp, inc=h0) |
+| 1 | C2 | E1 | 69.5% | -0.50 | ref=h0(E1,stored): W26/L23 -> ACCEPT (vs h0: +1.5pp, inc=C2) | ref=h0(E1,fresh): W27/L21 -> ACCEPT (vs h0: +1.5pp, inc=C2) | ref=h0(E1,stored): W26/L23 -> ACCEPT (vs h0: +1.5pp, inc=C2) |
+| 2 | C3 | E1 | 45.5% | +0.00 | ref=h0(E1,stored): W14/L59 -> reject (vs C2: -24.0pp, inc=C2) | ref=C2(E1,fresh): W14/L62 -> reject (vs C2: -24.0pp, inc=C2) | ref=C2(E1,stored): W14/L62 -> reject (vs C2: -24.0pp, inc=C2) |
+| 3 | C4 | E1 | 69.5% | -1.00 | ref=h0(E1,stored): W22/L19 -> FALSE ACCEPT (vs C2: +0.0pp, inc=C4) | ref=C2(E1,fresh): W25/L25 -> reject (vs C2: +0.0pp, inc=C2) | ref=C2(E1,stored): W25/L25 -> reject (vs C2: +0.0pp, inc=C2) |
+| 4 | C5 | E2 | 66.0% | -3.50 | ref=h0(E1,stored): W22/L26 -> reject (vs C4: -4.5pp, inc=C4) | ref=C2(E2,fresh): W28/L23 -> ACCEPT (vs C2: +4.0pp, inc=C5) | ref=C2(E2,fresh): W28/L23 -> ACCEPT (vs C2: +4.0pp, inc=C5) |
+| 5 | C6 | E2 | 71.0% | -3.00 | ref=h0(E1,stored): W25/L19 -> ACCEPT (vs C4: +0.5pp, inc=C6) | ref=C5(E2,fresh): W14/L19 -> false reject (vs C5: +5.0pp, inc=C5) | ref=C5(E2,stored): W17/L7 -> ACCEPT (vs C5: +5.0pp, inc=C6) |
+| 6 | C7 | E2 | 71.0% | -3.00 | ref=h0(E1,stored): W25/L19 -> FALSE ACCEPT (vs C6: +0.0pp, inc=C7) | ref=C5(E2,fresh): W14/L19 -> false reject (vs C5: +5.0pp, inc=C5) | ref=C6(E2,stored): W0/L0 -> reject (vs C6: +0.0pp, inc=C6) |
+| 7 | C8 | E2 | 27.5% | -1.50 | ref=h0(E1,stored): W7/L88 -> reject (vs C7: -43.5pp, inc=C7) | ref=C5(E2,fresh): W12/L104 -> reject (vs C5: -38.5pp, inc=C5) | ref=C6(E2,stored): W10/L97 -> reject (vs C6: -43.5pp, inc=C6) |
+| 8 | C9 | E4 | 73.0% | +0.50 | ref=h0(E1,stored): W27/L17 -> ACCEPT (vs C7: +1.0pp, inc=C9) | ref=C5(E4,fresh): W16/L19 -> false reject (vs C5: +6.0pp, inc=C5) | ref=C6(E4,fresh): W20/L18 -> ACCEPT (vs C6: +1.0pp, inc=C9) |
+| 9 | C10 | E4 | 71.0% | -0.50 | ref=h0(E1,stored): W24/L18 -> FALSE ACCEPT (vs C9: -2.0pp, inc=C10) | ref=C5(E4,fresh): W15/L22 -> false reject (vs C5: +4.0pp, inc=C5) | ref=C9(E4,stored): W13/L17 -> reject (vs C9: -2.0pp, inc=C9) |
+| 10 | C11 | E4 | 69.0% | +1.50 | ref=h0(E1,stored): W24/L22 -> FALSE ACCEPT (vs C10: -2.0pp, inc=C11) | ref=C5(E4,fresh): W13/L24 -> false reject (vs C5: +2.0pp, inc=C5) | ref=C9(E4,stored): W14/L22 -> reject (vs C9: -4.0pp, inc=C9) |
+
+- Reproducible with: DRIFT_SEEDS=1,2,3,4,5 python table10.py (and python -m unittest tests.test_demo_backend -v).
+- Traces all 11 rounds of Seed 1 across environment shifts E1 (r0–3) -> E2 (r4–7) -> E4 (r8–10).
+- Demonstrates how P1 accumulates 4 false accepts (C4, C7, C10, C11) and ends at 69.0% GT accuracy, P2 avoids late false accepts but suffers 5 false rejects (ending on C5 at 67.0% in 6,611 calls), and P3 refreshes only at the r=4 (E1->E2) and r=8 (E2->E4) transitions to finish on C9 at 73.0% GT accuracy with 0 false accepts in 4,811 calls.
+
