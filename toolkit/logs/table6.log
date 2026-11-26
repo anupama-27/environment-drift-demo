@@ -1,0 +1,47 @@
+2026-10-22 14:02:11,958 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-10-22 14:02:11,967 INFO seed 1 P1: evaluated=11 accepted=7 false_accepts=4 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 2 P1: evaluated=11 accepted=7 false_accepts=3 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 3 P1: evaluated=11 accepted=7 false_accepts=2 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 4 P1: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 5 P1: evaluated=11 accepted=8 false_accepts=4 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 1 P2: evaluated=11 accepted=2 false_accepts=0 false_rejects=5
+2026-10-22 14:02:11,967 INFO seed 2 P2: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
+2026-10-22 14:02:11,967 INFO seed 3 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 4 P2: evaluated=11 accepted=4 false_accepts=1 false_rejects=2
+2026-10-22 14:02:11,967 INFO seed 5 P2: evaluated=11 accepted=2 false_accepts=1 false_rejects=2
+2026-10-22 14:02:11,967 INFO seed 1 P3: evaluated=11 accepted=4 false_accepts=0 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 2 P3: evaluated=11 accepted=1 false_accepts=0 false_rejects=2
+2026-10-22 14:02:11,967 INFO seed 3 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 4 P3: evaluated=11 accepted=5 false_accepts=0 false_rejects=0
+2026-10-22 14:02:11,967 INFO seed 5 P3: evaluated=11 accepted=3 false_accepts=1 false_rejects=0
+2026-10-22 14:02:11,969 INFO Result table written to results/table6.md
+**Table 6. False-accept analysis**
+
+| Refresh policy | Candidates evaluated | Candidates accepted | Accepted candidates with no ground-truth improvement | False-accept rate, pooled (%) | False-accept rate, per-seed mean ± sd (%) | 95% CI of the seed-mean (pp) |
+| :- | :- | :- | :- | :- | :- | :- |
+| Frozen reference | 55 | 34 | 13 | 38.2 | 35.7 ± 22.6 | [+7.7, +63.8] |
+| Per-batch refresh | 55 | 13 | 3 | 23.1 | 20.0 ± 20.9 | [-6.0, +46.0] |
+| Environment-triggered refresh | 55 | 16 | 2 | 12.5 | 13.3 ± 18.3 | [-9.3, +36.0] |
+
+- False-accept rate = accepted candidates whose ground-truth accuracy is no greater than the incumbent's, divided by all accepted candidates. The candidate pool is identical across policies, so evaluated is 55 in every row.
+- Pooled sums the counts across seeds; the seed-mean averages the five per-seed rates and is the figure Table 3 reports. For environment-triggered refresh these are 2/16 = 12.5% and 13.3 ± 18.3, because a seed with one accept weighs the same as a seed with five in the average but not in the pool.
+- False accepts / accepts per seed (1, 2, 3, 4, 5): frozen reference 4/7, 3/7, 2/7, 0/5, 4/8; per-batch refresh 0/2, 0/1, 1/4, 1/4, 1/2; environment-triggered refresh 0/4, 0/1, 1/3, 0/5, 1/3.
+- Denominators are small: reclassifying one accept moves environment-triggered refresh by 6.2 pp, and the intervals overlap, so the ordering is a direction rather than an established gap.
+- Table 7's stale-reference, changed-environment rate covers a subset of these accepts, not the same quantity.
+- A policy lowers this rate by accepting less; results/table6_errors.md adds the improvements each one rejected.
+
+2026-10-22 14:02:11,969 INFO Result table written to results/table6_errors.md
+**Table 6. Decision errors in both directions**
+
+| Policy | Evaluated | Accepted | False accepts | False-accept rate (%) | False rejects | False-reject rate (%) | Total error rate (%) | False-accept rate, per-seed mean ± sd (%) |
+| :- | :- | :- | :- | :- | :- | :- | :- | :- |
+| P1: Frozen reference | 55 | 34 | 13 | 38.2 | 0 | 0.0 | 23.6 | 35.7 ± 22.6 |
+| P2: Per-batch refresh | 55 | 13 | 3 | 23.1 | 11 | 26.2 | 25.5 | 20.0 ± 20.9 |
+| P3: Environment-triggered refresh | 55 | 16 | 2 | 12.5 | 2 | 5.1 | 7.3 | 13.3 ± 18.3 |
+
+- False reject = a candidate with strictly higher ground-truth accuracy that the gate turned down; the rate is over rejected candidates.
+- Total error rate is over all candidates evaluated, so the two directions are comparable on one denominator.
+- A policy can lower its false-accept rate simply by accepting less, so the false-reject column is needed to tell caution apart from accuracy.
+
+2026-10-22 14:02:11,971 INFO Per-decision detail written to results/table6_decisions.csv
+

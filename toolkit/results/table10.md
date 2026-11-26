@@ -1,0 +1,17 @@
+**Table 10. System demonstration backend prototype: component coverage, callable verification, and implementation status**
+
+| Demonstration component | Backend callable (module:symbol) | Verification test (tests/test_demo_backend.py) | Input -> System operation | Verified output (Seed 1 run) | Deliverable status |
+| :- | :- | :- | :- | :- | :- |
+| Reference manager | drift/pipeline.py:Runner.run, drift/analysis.py:RunView.stored | test_01_reference_manager | Accepted prompts -> stores per-round snapshot & labels | 11 round snapshots; h0 E1 stored acc = 68.0% (n=200) | Backend prototype verified (CLI/API); web UI pending |
+| Environment version tracker | drift/envs.py:ENVS, env_at, map_schedule | test_02_environment_version_tracker | Schedule E1–E4 -> tracks active decoding & extractor | Schedule r0..3=E1, r4..7=E2, r8..10=E4; A2 mapped={0: 'E1', 4: 'E1', 8: 'E3'} | Backend prototype verified (CLI/API); web UI pending |
+| Reference rerun mechanism | drift/pipeline.py:Runner.outputs, drift/analysis.py:RunView.rerun | test_03_reference_rerun_mechanism | Stored reference + current env -> shuffled-batch fresh pass | h0 stored(E1)=68.0% vs fresh rerun(E4)=69.0% (n=200) | Backend prototype verified (CLI/API); web UI pending |
+| Candidate comparison view | drift/analysis.py:pair, win_rate, pair_measure | test_04_candidate_comparison_view | Candidate & reference labels -> paired W/L/T & inflation | Seed 1 C11 vs h0(E1) under E4: W24/L22, stored_win=12.0%, rerun_win=10.5%, inflation=+1.50 pp | Backend prototype verified (CLI/API); web UI pending |
+| Ground-truth evaluation panel | drift/extract.py:extract_v1, extract_v2, is_correct; candidate_truth | test_05_ground_truth_evaluation_panel | Model outputs & GSM8K gold -> exact match & delta_pp | Seed 1: 4/11 candidates improved (C2 +1.5pp, C5 +4.0pp, C6 +5.0pp, C9 +1.0pp) | Backend prototype verified (CLI/API); web UI pending |
+| False-accept and drift dashboard | drift/analysis.py:simulate(with_records=True), summarise | test_06_false_accept_and_drift_dashboard | Promotion trace -> flags accepts with delta_pp <= 0 | Seed 1 P1: 4/7 false accepts (C4, C7, C10, C11), mean inflation=-1.09 pp | Backend prototype verified (CLI/API); web UI pending |
+| Refresh-policy comparison | drift/analysis.py:POLICIES, simulate | test_07_refresh_policy_comparison | Candidate pool -> replays P1, P2, P3 on identical pool | Seed 1 final acc / FA / calls: P1=69.0% (4/7, 4411), P2=67.0% (0/2, 6611), P3=73.0% (0/4, 4811) | Backend prototype verified (CLI/API); web UI pending |
+| Reproducibility / experiment logs | drift/model.py:Cache, generation_key; drift/report.py:write_table | test_08_reproducibility_and_experiment_logs | Seed & config -> caches generations & writes logs/tables | SHA-1 key=44a05aebec...; 5-seed runs JSON + logs/table{3,4,5,6,8,9,10}.log verified | Backend prototype verified (CLI/API); web UI pending |
+
+- Deliverable framing: the current artifact is a verified CLI/API backend prototype; the interactive web UI layer remains pending and is not claimed as complete.
+- Every row is verified by executing its backend callable on saved post-fix data (Seed 1) and running the automated unit/integration test suite in tests/test_demo_backend.py (9/9 tests passing).
+- A companion end-to-end reproducible demonstration trace showing round-by-round inputs, paired W/L counts, drift inflation, and P1/P2/P3 promotion decisions on Seed 1 is written to results/table10_demo_trace.md.
+

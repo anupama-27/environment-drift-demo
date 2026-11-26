@@ -1,0 +1,8 @@
+torch
+transformers>=4.43
+accelerate
+datasets
+huggingface_hub
+# optional, much faster on Kaggle T4 / A100:
+# vllm
+

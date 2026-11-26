@@ -1,0 +1,31 @@
+2026-10-07 23:47:51,765 INFO backend=hf model=Qwen/Qwen2.5-1.5B-Instruct n_dev=200 n_eval=200 rounds=11 seeds=[1, 2, 3, 4, 5] schedule={0: 'E1', 4: 'E2', 8: 'E4'}
+2026-10-07 23:47:51,776 INFO seed 1 P1: {'policy': 'P1', 'evaluated': 11, 'accepted': 7, 'false_accepts': 4, 'false_accept_rate': 0.5714285714285714, 'final_gt_acc': 0.69, 'inflation': -0.010909090909090908, 'refreshes': 0, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 0}, 'total_calls': 4411}
+2026-10-07 23:47:51,776 INFO seed 2 P1: {'policy': 'P1', 'evaluated': 11, 'accepted': 7, 'false_accepts': 3, 'false_accept_rate': 0.42857142857142855, 'final_gt_acc': 0.71, 'inflation': 0.034545454545454546, 'refreshes': 0, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 0}, 'total_calls': 4411}
+2026-10-07 23:47:51,776 INFO seed 3 P1: {'policy': 'P1', 'evaluated': 11, 'accepted': 7, 'false_accepts': 2, 'false_accept_rate': 0.2857142857142857, 'final_gt_acc': 0.73, 'inflation': 0.008636363636363638, 'refreshes': 0, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 0}, 'total_calls': 4411}
+2026-10-07 23:47:51,776 INFO seed 4 P1: {'policy': 'P1', 'evaluated': 11, 'accepted': 5, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.725, 'inflation': 0.005454545454545455, 'refreshes': 0, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 0}, 'total_calls': 4411}
+2026-10-07 23:47:51,776 INFO seed 5 P1: {'policy': 'P1', 'evaluated': 11, 'accepted': 8, 'false_accepts': 4, 'false_accept_rate': 0.5, 'final_gt_acc': 0.685, 'inflation': 0.014999999999999998, 'refreshes': 0, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 0}, 'total_calls': 4411}
+2026-10-07 23:47:51,780 INFO seed 1 P2: {'policy': 'P2', 'evaluated': 11, 'accepted': 2, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.67, 'inflation': 0.0, 'refreshes': 11, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 2200}, 'total_calls': 6611}
+2026-10-07 23:47:51,780 INFO seed 2 P2: {'policy': 'P2', 'evaluated': 11, 'accepted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.69, 'inflation': 0.0, 'refreshes': 11, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 2200}, 'total_calls': 6611}
+2026-10-07 23:47:51,780 INFO seed 3 P2: {'policy': 'P2', 'evaluated': 11, 'accepted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'final_gt_acc': 0.73, 'inflation': 0.0, 'refreshes': 11, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 2200}, 'total_calls': 6611}
+2026-10-07 23:47:51,780 INFO seed 4 P2: {'policy': 'P2', 'evaluated': 11, 'accepted': 4, 'false_accepts': 1, 'false_accept_rate': 0.25, 'final_gt_acc': 0.7, 'inflation': 0.0, 'refreshes': 11, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 2200}, 'total_calls': 6611}
+2026-10-07 23:47:51,780 INFO seed 5 P2: {'policy': 'P2', 'evaluated': 11, 'accepted': 2, 'false_accepts': 1, 'false_accept_rate': 0.5, 'final_gt_acc': 0.695, 'inflation': 0.0, 'refreshes': 11, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 2200}, 'total_calls': 6611}
+2026-10-07 23:47:51,785 INFO seed 1 P3: {'policy': 'P3', 'evaluated': 11, 'accepted': 4, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.73, 'inflation': -0.009545454545454546, 'refreshes': 2, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 400}, 'total_calls': 4811}
+2026-10-07 23:47:51,785 INFO seed 2 P3: {'policy': 'P3', 'evaluated': 11, 'accepted': 1, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.69, 'inflation': 0.002272727272727275, 'refreshes': 2, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 400}, 'total_calls': 4811}
+2026-10-07 23:47:51,785 INFO seed 3 P3: {'policy': 'P3', 'evaluated': 11, 'accepted': 3, 'false_accepts': 1, 'false_accept_rate': 0.3333333333333333, 'final_gt_acc': 0.73, 'inflation': -0.004999999999999999, 'refreshes': 2, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 400}, 'total_calls': 4811}
+2026-10-07 23:47:51,785 INFO seed 4 P3: {'policy': 'P3', 'evaluated': 11, 'accepted': 5, 'false_accepts': 0, 'false_accept_rate': 0.0, 'final_gt_acc': 0.725, 'inflation': -0.00818181818181818, 'refreshes': 2, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 400}, 'total_calls': 4811}
+2026-10-07 23:47:51,785 INFO seed 5 P3: {'policy': 'P3', 'evaluated': 11, 'accepted': 3, 'false_accepts': 1, 'false_accept_rate': 0.3333333333333333, 'final_gt_acc': 0.75, 'inflation': 0.0009090909090909098, 'refreshes': 2, 'calls': {'proposer': 2211, 'candidate_eval': 2200, 'reference_refresh': 400}, 'total_calls': 4811}
+2026-10-07 23:47:51,786 INFO Result table written to results/table3.md
+**Table 3. Main comparison of reference-refresh policies**
+
+| Policy | Reference refresh rule | Ground-truth accuracy (%) ↑ | False-accept rate (%) ↓ | Model calls (logical, estimated) ↓ | Reference refreshes ↓ |
+| :- | :- | :- | :- | :- | :- |
+| P1: Frozen reference | Never refresh | 70.80 ± 2.02 | 35.71 ± 22.59 | 4411 ± 0 | 0 ± 0 |
+| P2: Per-batch refresh | Refresh every batch | 69.70 ± 2.17 | 20.00 ± 20.92 | 6611 ± 0 | 11 ± 0 |
+| P3: Environment-triggered refresh | Refresh after detected environment changes | 72.50 ± 2.18 | 13.33 ± 18.26 | 4811 ± 0 | 2 ± 0 |
+
+- Ground-truth accuracy = final incumbent under the final environment.
+- Model calls are logical (estimated) counts: simulate() is a dry run, so it adds up the proposals, dev passes, candidate evaluations and refreshes each policy would need.
+- The policies are reference-management rules compared on the same candidate pool, not different ways of improving accuracy; accuracy is capped by the best candidate in the pool.
+- Policies replay the same candidate pool in dry-run mode.
+
+
