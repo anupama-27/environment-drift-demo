@@ -1,0 +1,52 @@
+{
+ "groups": [
+  {
+   "id": "paper",
+   "title": "GSM8K case study, Qwen2.5-1.5B-Instruct",
+   "source": "measured",
+   "note": "The five recorded runs behind the paper: 11 rounds, 200 evaluation items, decoding changes at round 4 and the extractor at round 8.",
+   "default": "gsm8k-qwen2.5-1.5b-seed5",
+   "runs": [
+    {
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "label": "Seed 1",
+     "url": "data/runs/paper/seed1.json"
+    },
+    {
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "label": "Seed 2",
+     "url": "data/runs/paper/seed2.json"
+    },
+    {
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "label": "Seed 3",
+     "url": "data/runs/paper/seed3.json"
+    },
+    {
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "label": "Seed 4",
+     "url": "data/runs/paper/seed4.json"
+    },
+    {
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "label": "Seed 5",
+     "url": "data/runs/paper/seed5.json"
+    }
+   ]
+  },
+  {
+   "id": "smoke",
+   "title": "Smoke run",
+   "source": "measured",
+   "note": "One short run recorded with driftaudit run on an M1 laptop: Qwen2.5-0.5B-Instruct, 40 GSM8K items, 4 rounds, one seed. It shows the recorder working from start to finish. Its accuracy figures are not results of the paper.",
+   "default": "gsm8k-qwen2.5-0.5b-instruct-seed1",
+   "runs": [
+    {
+     "id": "gsm8k-qwen2.5-0.5b-instruct-seed1",
+     "label": "Seed 1",
+     "url": "data/runs/smoke/smoke-qwen2.5-0.5b.json"
+    }
+   ]
+  }
+ ]
+}

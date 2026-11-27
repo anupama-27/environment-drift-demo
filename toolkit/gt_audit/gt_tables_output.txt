@@ -1,0 +1,76 @@
+seeds: [1, 2, 3, 4, 5] prompts per seed: [11, 12, 11, 11, 12]
+
+(i) Accuracy (%) over all prompt x seed rows, stored outputs (mean over 57 rows):
+  greedy  v1 65.75  v2 71.35  gt 70.47  gt_strict 66.32 | v2-gt per prompt: mean 0.88 max 27.0; gt-v1 mean 4.72 max 38.5
+  sampled v1 64.50  v2 70.11  gt 69.40  gt_strict 65.05 | v2-gt per prompt: mean 0.71 max 26.5; gt-v1 mean 4.90 max 37.5
+  per seed (greedy v1/v2/gt | sampled v1/v2/gt), mean over that seed's prompts:
+    seed 1: 62.9/71.6/71.0 | 61.1/70.1/69.7
+    seed 2: 68.7/72.0/71.8 | 66.1/69.4/69.4
+    seed 3: 66.5/70.6/70.2 | 67.4/71.4/71.0
+    seed 4: 64.2/70.7/68.0 | 61.8/68.7/66.0
+    seed 5: 66.2/71.7/71.2 | 65.8/71.0/70.7
+  best prompt (argmax) differs between v2 and gt in 1/10 seed x decoding cells
+  largest greedy v2-gt gaps: [(4, 1, 'a9567b9f', 59.5, 32.5), (1, 7, '1c74f877', 67.5, 63.0), (5, 7, 'fcc895df', 73.5, 72.0), (3, 1, '65c874ba', 70.5, 69.5), (3, 6, 'f29513e3', 71.0, 70.0)]
+
+(ii) greedy stored v1->v2 flips (seed-expanded): 638; gt agrees (credits) 536 = 84.0%, gt rejects 102
+    last_number   369 flips: gt credits 313, rejects 56
+    bold          208 flips: gt credits 186, rejects 22
+    boxed_loose    53 flips: gt credits 29, rejects 24
+    answer_is       8 flips: gt credits 8, rejects 0
+
+(iii) Table 3 replay (gate = environment parser labels, unchanged; only GT grading switches)
+  [drift schedule, sanity: GT = env parser] GT=env
+    P1: final GT acc 70.8 ± 2.0 | false accepts 13/34 pooled | per-seed FA/acc [(4, 7), (3, 7), (2, 7), (0, 5), (4, 8)] | per-seed acc [69.0, 71.0, 73.0, 72.5, 68.5]
+    P2: final GT acc 69.7 ± 2.2 | false accepts 3/13 pooled | per-seed FA/acc [(0, 2), (0, 1), (1, 4), (1, 4), (1, 2)] | per-seed acc [67.0, 69.0, 73.0, 70.0, 69.5]
+    P3: final GT acc 72.5 ± 2.2 | false accepts 2/16 pooled | per-seed FA/acc [(0, 4), (0, 1), (1, 3), (0, 5), (1, 3)] | per-seed acc [73.0, 69.0, 73.0, 72.5, 75.0]
+  SANITY reproduces current Table 3 (P1 13/34, P2 3/13, P3 2/16; 70.8/69.7/72.5): True
+  [drift schedule] GT=gt
+    P1: final GT acc 70.6 ± 2.1 | false accepts 17/34 pooled | per-seed FA/acc [(5, 7), (3, 7), (3, 7), (1, 5), (5, 8)] | per-seed acc [69.0, 71.0, 73.0, 72.0, 68.0]
+    P2: final GT acc 69.7 ± 2.2 | false accepts 4/13 pooled | per-seed FA/acc [(1, 2), (0, 1), (1, 4), (1, 4), (1, 2)] | per-seed acc [67.0, 69.0, 73.0, 70.0, 69.5]
+    P3: final GT acc 72.3 ± 2.2 | false accepts 4/16 pooled | per-seed FA/acc [(1, 4), (0, 1), (1, 3), (1, 5), (1, 3)] | per-seed acc [72.5, 69.0, 73.0, 72.0, 75.0]
+  [drift schedule] GT=gt_strict
+    P1: final GT acc 70.4 ± 2.3 | false accepts 15/34 pooled | per-seed FA/acc [(4, 7), (3, 7), (3, 7), (1, 5), (4, 8)] | per-seed acc [68.0, 71.0, 73.0, 72.0, 68.0]
+    P2: final GT acc 69.6 ± 2.3 | false accepts 3/13 pooled | per-seed FA/acc [(0, 2), (0, 1), (1, 4), (1, 4), (1, 2)] | per-seed acc [66.5, 69.0, 73.0, 70.0, 69.5]
+    P3: final GT acc 71.6 ± 1.5 | false accepts 3/16 pooled | per-seed FA/acc [(0, 4), (0, 1), (1, 3), (1, 5), (1, 3)] | per-seed acc [72.0, 69.0, 73.0, 72.0, 72.0]
+  [drift schedule] GT=v2fixed
+    P1: final GT acc 70.8 ± 2.0 | false accepts 16/34 pooled | per-seed FA/acc [(5, 7), (3, 7), (2, 7), (1, 5), (5, 8)] | per-seed acc [69.0, 71.0, 73.0, 72.5, 68.5]
+    P2: final GT acc 69.7 ± 2.2 | false accepts 5/13 pooled | per-seed FA/acc [(1, 2), (0, 1), (1, 4), (2, 4), (1, 2)] | per-seed acc [67.0, 69.0, 73.0, 70.0, 69.5]
+    P3: final GT acc 72.5 ± 2.2 | false accepts 4/16 pooled | per-seed FA/acc [(1, 4), (0, 1), (1, 3), (1, 5), (1, 3)] | per-seed acc [73.0, 69.0, 73.0, 72.5, 75.0]
+  No-drift replay, schedule {0: 'E1'}:
+  [no drift] GT=env
+    P1: final GT acc 70.6 ± 1.5 | false accepts 17/37 pooled | per-seed FA/acc [(3, 7), (4, 9), (3, 6), (3, 8), (4, 7)] | per-seed acc [70.0, 72.5, 68.5, 71.0, 71.0]
+    P2: final GT acc 73.3 ± 0.6 | false accepts 1/11 pooled | per-seed FA/acc [(0, 3), (0, 1), (0, 3), (1, 3), (0, 1)] | per-seed acc [73.0, 73.5, 72.5, 73.5, 74.0]
+    P3: final GT acc 73.4 ± 0.5 | false accepts 0/12 pooled | per-seed FA/acc [(0, 4), (0, 1), (0, 3), (0, 3), (0, 1)] | per-seed acc [73.5, 73.5, 72.5, 73.5, 74.0]
+  [no drift] GT=gt
+    P1: final GT acc 70.7 ± 1.4 | false accepts 19/37 pooled | per-seed FA/acc [(4, 7), (6, 9), (3, 6), (3, 8), (3, 7)] | per-seed acc [70.5, 72.5, 68.5, 71.0, 71.0]
+    P2: final GT acc 74.0 ± 0.9 | false accepts 3/11 pooled | per-seed FA/acc [(1, 3), (0, 1), (0, 3), (2, 3), (0, 1)] | per-seed acc [74.0, 73.5, 73.5, 73.5, 75.5]
+    P3: final GT acc 74.3 ± 1.1 | false accepts 2/12 pooled | per-seed FA/acc [(1, 4), (0, 1), (0, 3), (1, 3), (0, 1)] | per-seed acc [75.5, 73.5, 73.5, 73.5, 75.5]
+  [no drift] GT=gt_strict
+    P1: final GT acc 70.6 ± 1.5 | false accepts 18/37 pooled | per-seed FA/acc [(3, 7), (5, 9), (3, 6), (3, 8), (4, 7)] | per-seed acc [70.0, 72.5, 68.5, 71.0, 71.0]
+    P2: final GT acc 73.4 ± 0.5 | false accepts 1/11 pooled | per-seed FA/acc [(0, 3), (0, 1), (0, 3), (1, 3), (0, 1)] | per-seed acc [73.5, 73.5, 72.5, 73.5, 74.0]
+    P3: final GT acc 73.5 ± 0.6 | false accepts 0/12 pooled | per-seed FA/acc [(0, 4), (0, 1), (0, 3), (0, 3), (0, 1)] | per-seed acc [74.0, 73.5, 72.5, 73.5, 74.0]
+  [no drift] GT=v2fixed
+    P1: final GT acc 70.9 ± 1.6 | false accepts 20/37 pooled | per-seed FA/acc [(4, 7), (6, 9), (3, 6), (4, 8), (3, 7)] | per-seed acc [71.0, 73.0, 68.5, 71.0, 71.0]
+    P2: final GT acc 74.2 ± 1.0 | false accepts 3/11 pooled | per-seed FA/acc [(1, 3), (0, 1), (0, 3), (2, 3), (0, 1)] | per-seed acc [74.0, 73.5, 74.0, 73.5, 76.0]
+    P3: final GT acc 74.6 ± 1.3 | false accepts 3/12 pooled | per-seed FA/acc [(1, 4), (0, 1), (0, 3), (2, 3), (0, 1)] | per-seed acc [76.0, 73.5, 74.0, 73.5, 76.0]
+  Accept-level changes, drift schedule (env-parser GT -> gt):
+    P1: [(1, 5, 'E2', 0.5, -1.5, 'ok->FA'), (2, 2, 'E1', 1.0, -0.5, 'ok->FA'), (2, 3, 'E1', -0.5, 1.5, 'FA->ok'), (3, 9, 'E4', 0.5, 0.0, 'ok->FA'), (4, 10, 'E4', 0.5, 0.0, 'ok->FA'), (5, 6, 'E2', 0.5, -2.0, 'ok->FA')]
+    P2: [(1, 4, 'E2', 4.0, -2.5, 'ok->FA')]
+    P3: [(1, 4, 'E2', 4.0, -2.5, 'ok->FA'), (4, 10, 'E4', 0.5, 0.0, 'ok->FA')]
+
+(iv) Table 4 drift inflation (pp), reference age 3, stored under E1, mean ± sd over seeds
+  [as published: env parsers (v1 for E1/E2, v2 for E3/E4)]
+    E1: stored win 9.00 ± 1.04 | rerun win 9.12 ± 0.76 | inflation -0.13 ± 0.41
+    E2: stored win 9.14 ± 0.93 | rerun win 9.72 ± 2.05 | inflation -0.59 ± 1.63
+    E3: stored win 10.03 ± 1.08 | rerun win 8.71 ± 1.04 | inflation 1.31 ± 0.53
+    E4: stored win 10.14 ± 1.39 | rerun win 8.60 ± 1.61 | inflation 1.54 ± 1.21
+  [all labels from gt (no extraction change exists)]
+    E1: stored win 8.64 ± 1.17 | rerun win 8.74 ± 0.89 | inflation -0.10 ± 0.44
+    E2: stored win 9.06 ± 0.98 | rerun win 8.86 ± 1.76 | inflation 0.20 ± 1.60
+    E3: stored win 8.64 ± 1.17 | rerun win 8.74 ± 0.89 | inflation -0.10 ± 0.44
+    E4: stored win 9.06 ± 0.98 | rerun win 8.86 ± 1.76 | inflation 0.20 ± 1.60
+  [extraction change v1 -> gt: stored anchor as recorded (v1), candidate + rerun graded by gt]
+    E1: stored win 9.72 ± 1.05 | rerun win 8.74 ± 0.89 | inflation 0.99 ± 0.47
+    E2: stored win 10.03 ± 1.29 | rerun win 8.86 ± 1.76 | inflation 1.16 ± 1.27
+    E3: stored win 9.72 ± 1.05 | rerun win 8.74 ± 0.89 | inflation 0.99 ± 0.47
+    E4: stored win 10.03 ± 1.29 | rerun win 8.86 ± 1.76 | inflation 1.16 ± 1.27

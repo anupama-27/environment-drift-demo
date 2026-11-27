@@ -1,0 +1,166 @@
+{
+ "candidates": [
+  {
+   "accepted": true,
+   "env": "base",
+   "id": "C1",
+   "losses": 5,
+   "note": "synthetic",
+   "parent": "41c7f43e0371",
+   "prompt": "6649a14322f4",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "6cb578af389d"
+   },
+   "round": 0,
+   "wins": 6
+  },
+  {
+   "accepted": true,
+   "env": "base",
+   "id": "C2",
+   "losses": 3,
+   "note": "synthetic",
+   "parent": "6649a14322f4",
+   "prompt": "c4dfcd951743",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "6cb578af389d"
+   },
+   "round": 1,
+   "wins": 7
+  },
+  {
+   "accepted": true,
+   "env": "base-lenient",
+   "id": "C3",
+   "losses": 4,
+   "note": "synthetic",
+   "parent": "c4dfcd951743",
+   "prompt": "19adcf348d19",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "6cb578af389d"
+   },
+   "round": 2,
+   "wins": 7
+  }
+ ],
+ "cost": {
+  "n_dev": 0,
+  "proposal_calls": 1
+ },
+ "created": "2026-11-27T00:00:00Z",
+ "environments": {
+  "base": {
+   "decoding": "greedy-0.0",
+   "detail": {
+    "model": "synthetic",
+    "scorer_version": "1",
+    "temperature": 0.0
+   },
+   "fingerprint": "model=synthetic;decode=greedy-0.0;extract=strict@1",
+   "name": "Baseline",
+   "scorer": "strict"
+  },
+  "base-lenient": {
+   "decoding": "greedy-0.0",
+   "detail": {
+    "model": "synthetic",
+    "scorer_version": "1",
+    "temperature": 0.0
+   },
+   "fingerprint": "model=synthetic;decode=greedy-0.0;extract=lenient@1",
+   "name": "Lenient scorer",
+   "scorer": "lenient"
+  }
+ },
+ "id": "synthetic-c",
+ "labels": {
+  "19adcf348d19": {
+   "base": {
+    "current": "1010010010010101110001000"
+   },
+   "base-lenient": {
+    "current": "1010010110010101110001010"
+   }
+  },
+  "41c7f43e0371": {
+   "base": {
+    "current": "1000011010001100011111000",
+    "rerun": "1000011010001100011111100"
+   },
+   "base-lenient": {
+    "current": "1001011010111100011111010"
+   }
+  },
+  "6649a14322f4": {
+   "base": {
+    "current": "1100000110001010000110110",
+    "rerun": "1100000110001010000110110"
+   },
+   "base-lenient": {
+    "current": "1100000110001010011110110"
+   }
+  },
+  "c4dfcd951743": {
+   "base": {
+    "current": "1011111010000111000101100",
+    "rerun": "1011111010000011000101100"
+   },
+   "base-lenient": {
+    "current": "1111111110001111011101101"
+   }
+  }
+ },
+ "meta": {
+  "note": "Labels drawn from sha1 digests by driftaudit._golden. Not a measurement."
+ },
+ "model": {
+  "backend": "sha1",
+  "id": "synthetic"
+ },
+ "prompts": {
+  "19adcf348d19": "Synthetic prompt 3 of synthetic-c. Give the final answer as a number.",
+  "41c7f43e0371": "Synthetic prompt 0 of synthetic-c. Give the final answer as a number.",
+  "6649a14322f4": "Synthetic prompt 1 of synthetic-c. Give the final answer as a number.",
+  "6cb578af389d": "Baseline prompt measured before synthetic-c started.",
+  "c4dfcd951743": "Synthetic prompt 2 of synthetic-c. Give the final answer as a number."
+ },
+ "schedule": {
+  "0": "base",
+  "2": "base-lenient"
+ },
+ "schema": "driftaudit.run/v1",
+ "seed": 13,
+ "snapshots": [
+  {
+   "env": "base",
+   "prompt": "41c7f43e0371",
+   "round": 0
+  },
+  {
+   "env": "base",
+   "prompt": "6649a14322f4",
+   "round": 1
+  },
+  {
+   "env": "base-lenient",
+   "prompt": "c4dfcd951743",
+   "round": 2
+  }
+ ],
+ "source": "synthetic",
+ "task": {
+  "n_dev": 0,
+  "n_items": 25,
+  "name": "synthetic"
+ },
+ "tool": {
+  "name": "driftaudit",
+  "version": "0.1.0"
+ }
+}

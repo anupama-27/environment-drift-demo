@@ -1,0 +1,228 @@
+@layer views {
+  /* Rounds */
+  .rounds > .notice {
+    margin-top: var(--space-2);
+  }
+
+  .rounds__policy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-15);
+    margin-top: var(--space-3);
+  }
+
+  .rounds__lede {
+    max-width: 78ch;
+    margin-top: var(--space-2);
+  }
+
+  .rounds__top,
+  .rounds > .rounds__section {
+    margin-top: var(--space-4);
+  }
+
+  .rounds > .rounds__detail {
+    margin-top: var(--space-6);
+  }
+
+  .rounds__section h2 {
+    margin-bottom: var(--space-05);
+  }
+
+  .rounds__note {
+    max-width: var(--measure);
+    margin-bottom: var(--space-15);
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  /* Columns of the chart that pick a round. They sit over the plot area of each drawing. */
+  .rounds__plot {
+    position: relative;
+  }
+
+  .rounds__plot > svg {
+    display: block;
+  }
+
+  .rounds__hits {
+    position: absolute;
+    top: calc(30 / 300 * 100%);
+    right: calc(8 / 760 * 100%);
+    bottom: calc(4 / 300 * 100%);
+    left: calc(64 / 760 * 100%);
+    display: flex;
+  }
+
+  .rounds__hits--narrow {
+    top: calc(30 / 236 * 100%);
+    right: calc(4 / 360 * 100%);
+    bottom: 0;
+    left: calc(30 / 360 * 100%);
+  }
+
+  .rounds__hit {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0 1px;
+    padding: 0;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+  }
+
+  .rounds__hit:hover {
+    border-color: var(--steel);
+  }
+
+  .rounds__hit.is-selected {
+    border-color: var(--ink);
+  }
+
+  .rounds__row {
+    cursor: pointer;
+  }
+
+  .rounds__row:hover > * {
+    background: var(--bench-2);
+  }
+
+  .rounds__decision {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    white-space: nowrap;
+  }
+
+  /* Round detail */
+  .rounds__left > h2 {
+    margin-bottom: 0;
+    text-wrap: balance;
+  }
+
+  .rounds__story {
+    max-width: var(--measure);
+    margin: var(--space-1) 0 var(--space-3);
+  }
+
+  .rounds__left > .kv {
+    margin-top: var(--space-3);
+  }
+
+  .rounds__picked {
+    z-index: 1;
+    outline: 2px solid var(--ink);
+    outline-offset: 1px;
+  }
+
+  .rounds__picked:focus-visible {
+    z-index: 2;
+    outline: var(--focus);
+  }
+
+  .rounds__item {
+    padding: var(--space-2);
+    border: 1px solid var(--rule);
+  }
+
+  .rounds__item-title {
+    font: 600 var(--fs-heading)/var(--lh-heading) var(--font-cond);
+  }
+
+  .rounds__cellstate {
+    margin-top: var(--space-05);
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .rounds__question {
+    margin-top: var(--space-2);
+    overflow-wrap: anywhere;
+  }
+
+  .rounds__gold {
+    margin-top: var(--space-1);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .rounds__item > .notice {
+    margin-top: var(--space-2);
+  }
+
+  .rounds__block {
+    margin-top: var(--space-3);
+  }
+
+  .rounds__block-title {
+    font: 600 var(--fs-small)/20px var(--font-cond);
+  }
+
+  .rounds__block-meta {
+    color: var(--graphite);
+    font-weight: 500;
+  }
+
+  .rounds__read,
+  .rounds__also {
+    margin-top: var(--space-05);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .rounds__also {
+    color: var(--graphite);
+  }
+
+  .rounds__out {
+    margin-top: var(--space-1);
+    padding: var(--space-1) var(--space-15);
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    font: 400 var(--fs-mono)/20px var(--font-mono);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .rounds__out.is-clipped {
+    max-height: calc(12 * 20px + var(--space-1) + 2px);
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .disclosure__body > .rounds__out {
+    margin-top: 0;
+  }
+
+  .rounds__expand {
+    margin-top: var(--space-05);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .rounds__prompts {
+    margin-top: var(--space-3);
+  }
+
+  .rounds__prompts > * + * {
+    margin-top: var(--space-1);
+  }
+
+  .rounds__skeleton {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-15);
+  }
+
+  .rounds__skeleton-line {
+    display: block;
+    height: 12px;
+    background: var(--bench);
+  }
+
+  .rounds__skeleton-line:nth-child(3n + 2) {
+    width: 88%;
+  }
+
+  .rounds__skeleton-line:last-child {
+    width: 56%;
+  }
+}

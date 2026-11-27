@@ -3,49 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Environment Drift in Self-Improving LLM Agents: an interactive demo</title>
-<meta name="description" content="A replay of five measured GSM8K runs in which an agent rewrites its own instruction, the environment changes underneath it, and a stale reference lets weaker instructions through.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>DriftAudit: audit a self-improving LLM loop for stale references</title>
+<meta name="description" content="DriftAudit checks whether a self-improving LLM loop promoted prompts because they were better or because its stored reference had gone stale. Audit any run log in the browser; five recorded GSM8K runs are bundled.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Environment Drift in Self-Improving LLM Agents: an interactive demo">
-<meta property="og:description" content="A replay of five measured GSM8K runs in which a stale reference lets weaker instructions through.">
+<meta property="og:title" content="DriftAudit: audit a self-improving LLM loop for stale references">
+<meta property="og:description" content="Audit any run log in the browser: which promotions were not improvements, and which of those a stale reference caused. Five recorded GSM8K runs are bundled.">
 <meta property="og:image" content="https://anupama-27.github.io/environment-drift-demo/media/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Environment Drift in Self-Improving LLM Agents, with a chart of net gain per round against a stored and a regenerated reference">
+<meta property="og:image:alt" content="The DriftAudit workbench on seed 5: the environment schedule with each decision marked, and the verdict, 8 promotions under the frozen policy, 4 of them not improvements, 3 of those because the reference was stale">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/views.css">
+<link rel="stylesheet" href="assets/css/view-rounds.css">
+<link rel="stylesheet" href="assets/css/view-analysis.css">
+<link rel="stylesheet" href="assets/css/view-pages.css">
 </head>
 <body>
-<a class="skip" href="#stage">Skip to the demo</a>
-<div id="sample-banner" class="banner" hidden>
-  Development sample. These runs used a mock model to test the interface. None of the numbers below were measured.
-</div>
+<a class="skip-link" href="#main">Skip to the content</a>
 
-<header class="masthead">
-  <p class="kicker">System demonstration</p>
-  <h1>Environment Drift in Self-Improving LLM Agents: Measuring Reference Staleness and False Promotions</h1>
-  <p class="dek">An interactive replay of five measured runs on GSM8K.</p>
-  <nav class="links" id="links" aria-label="Project links" hidden></nav>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="#/">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="3" fill="#16191D"/><path d="M5 10h22M6 10v10M11 10v5M16 10v10M26 10v10" fill="none" stroke="#FFFFFF" stroke-width="2"/><path d="M21 15v10" fill="none" stroke="#F2A900" stroke-width="2"/></svg>
+      <span>DriftAudit</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#/" data-nav="workbench">Workbench</a>
+      <a href="#/case-study" data-nav="case-study">Case study</a>
+      <a href="#/install" data-nav="install">Install</a>
+    </nav>
+    <a class="site-header__repo" href="https://github.com/anupama-27/environment-drift-demo">GitHub</a>
+  </div>
 </header>
 
-<nav class="steps" aria-label="Demo steps">
-  <ol id="stepnav"></ol>
-  <div class="seedpick">
-    <div><span class="replaytag">Replay of recorded runs</span> <label for="seed">Run</label> <select id="seed"></select></div>
-    <p class="footnote" id="runnote"></p>
-  </div>
-</nav>
-
-<main id="stage" tabindex="-1" aria-live="polite">
-  <div class="skeleton" aria-label="Loading the replay"><span></span><span></span><span></span><span></span></div>
+<main id="main" tabindex="-1" aria-busy="true">
+  <div class="runbar" id="da-runbar" hidden></div>
+  <noscript><p class="wrap noscript">DriftAudit computes every audit in your browser, so this page needs JavaScript. The same audit runs from the command line; see the <a href="https://github.com/anupama-27/environment-drift-demo">repository</a>.</p></noscript>
+  <div id="da-view"></div>
 </main>
 
-<footer class="pagefoot">
-  <p><b>Limits.</b> All numbers were measured in advance; nothing is generated on this page. One model, one task, five seeds. Promotion and the false accept check use the same 200 questions. Call counts are estimates from a dry run. Financial QA and code are an illustration and were not run.</p>
-  <section class="video" id="video"></section>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>The five GSM8K runs are recorded measurements: one model, one task, five seeds. Promotion and the false-accept check use the same 200 questions, and model-call counts are estimates from a dry run. The audit of any run log is computed in your browser. No model runs here and nothing is uploaded.</p>
+    <p>Code under the <a href="https://github.com/anupama-27/environment-drift-demo/blob/main/LICENSE">MIT license</a>. Fonts: Barlow and IBM Plex Mono, SIL Open Font License.</p>
+  </div>
 </footer>
 
-<script src="app.js?v=8"></script>
+<script src="assets/js/engine/stats.js"></script>
+<script src="assets/js/engine/schema.js"></script>
+<script src="assets/js/engine/scorers.js"></script>
+<script src="assets/js/engine/engine.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/state.js"></script>
+<script src="assets/js/router.js"></script>
+<script src="assets/js/library.js"></script>
+<script src="assets/js/outputs.js"></script>
+<script src="assets/js/views/summary.js"></script>
+<script src="assets/js/views/rounds.js"></script>
+<script src="assets/js/views/policies.js"></script>
+<script src="assets/js/views/probe.js"></script>
+<script src="assets/js/views/environments.js"></script>
+<script src="assets/js/views/export.js"></script>
+<script src="assets/js/views/casestudy.js"></script>
+<script src="assets/js/views/install.js"></script>
+<script src="assets/js/boot.js"></script>
 </body>
 </html>

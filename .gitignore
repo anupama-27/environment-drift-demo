@@ -2,3 +2,28 @@ __pycache__/
 *.pyc
 toolkit/runs/*.jsonl
 toolkit/demo/
+
+# build output
+build/
+dist/
+*.egg-info/
+
+# environments and caches
+.venv/
+.pytest_cache/
+node_modules/
+
+# generation caches
+runs/generations.jsonl
+cache_*.jsonl
+
+# local runs of the CLI
+/*.outputs.jsonl.gz
+/driftaudit-run.json
+
+# editor and OS
+.DS_Store
+
+# credentials
+kaggle.json
+.env

@@ -1,0 +1,855 @@
+{
+ "age": {
+  "ages": [
+   0,
+   1,
+   3,
+   5,
+   10
+  ],
+  "by_env": {
+   "E1": [
+    {
+     "age": 0,
+     "false_accepts": 0,
+     "hi": 0.2116598620929886,
+     "lo": -0.3389325893657159,
+     "mean": -0.06363636363636364,
+     "pairs": 55,
+     "per_run": [
+      -0.18181818181818182,
+      0.27272727272727276,
+      -0.3181818181818183,
+      -0.09090909090909091,
+      0.0
+     ],
+     "promoted": 18
+    },
+    {
+     "age": 1,
+     "false_accepts": 5,
+     "hi": 0.2631277236973671,
+     "lo": -0.32312772369736714,
+     "mean": -0.030000000000000016,
+     "pairs": 50,
+     "per_run": [
+      0.05,
+      0.25,
+      -0.4000000000000001,
+      0.0,
+      -0.04999999999999998
+     ],
+     "promoted": 20
+    },
+    {
+     "age": 3,
+     "false_accepts": 7,
+     "hi": 0.3867514777702161,
+     "lo": -0.6367514777702161,
+     "mean": -0.125,
+     "pairs": 40,
+     "per_run": [
+      -0.12499999999999999,
+      0.37500000000000006,
+      -0.75,
+      0.0625,
+      -0.1875
+     ],
+     "promoted": 17
+    },
+    {
+     "age": 5,
+     "false_accepts": 8,
+     "hi": 0.533243842715841,
+     "lo": -1.0999105093825077,
+     "mean": -0.2833333333333333,
+     "pairs": 30,
+     "per_run": [
+      -0.33333333333333337,
+      0.5833333333333334,
+      -1.25,
+      -0.08333333333333334,
+      -0.33333333333333337
+     ],
+     "promoted": 15
+    },
+    {
+     "age": 10,
+     "false_accepts": 3,
+     "hi": 0.7940027470655165,
+     "lo": -1.5940027470655167,
+     "mean": -0.4,
+     "pairs": 5,
+     "per_run": [
+      -1.0,
+      1.0,
+      -1.5,
+      0.0,
+      -0.5
+     ],
+     "promoted": 4
+    }
+   ],
+   "E4": [
+    {
+     "age": 0,
+     "false_accepts": 18,
+     "hi": 2.066149587257204,
+     "lo": 0.22475950365188635,
+     "mean": 1.1454545454545453,
+     "pairs": 55,
+     "per_run": [
+      0.7727272727272727,
+      1.6818181818181819,
+      1.3636363636363633,
+      0.04545454545454551,
+      1.8636363636363638
+     ],
+     "promoted": 27
+    },
+    {
+     "age": 1,
+     "false_accepts": 16,
+     "hi": 2.062881476983179,
+     "lo": 0.29711852301682085,
+     "mean": 1.18,
+     "pairs": 50,
+     "per_run": [
+      0.8,
+      1.6500000000000001,
+      1.6499999999999997,
+      0.10000000000000006,
+      1.7000000000000002
+     ],
+     "promoted": 25
+    },
+    {
+     "age": 3,
+     "false_accepts": 10,
+     "hi": 3.0366444176596197,
+     "lo": 0.0383555823403805,
+     "mean": 1.5375,
+     "pairs": 40,
+     "per_run": [
+      1.375,
+      2.9375000000000004,
+      2.5,
+      -0.06250000000000006,
+      0.9375000000000001
+     ],
+     "promoted": 18
+    },
+    {
+     "age": 5,
+     "false_accepts": 10,
+     "hi": 4.136660817547739,
+     "lo": 0.8966725157855939,
+     "mean": 2.5166666666666666,
+     "pairs": 30,
+     "per_run": [
+      2.2500000000000004,
+      4.25,
+      3.4166666666666665,
+      1.0833333333333335,
+      1.5833333333333335
+     ],
+     "promoted": 16
+    },
+    {
+     "age": 10,
+     "false_accepts": 4,
+     "hi": 5.082563490037604,
+     "lo": 1.9174365099623967,
+     "mean": 3.5,
+     "pairs": 5,
+     "per_run": [
+      1.5,
+      5.0,
+      3.5000000000000004,
+      3.5000000000000004,
+      4.0
+     ],
+     "promoted": 5
+    }
+   ]
+  },
+  "stored_env": "E1"
+ },
+ "n_decisions": 55,
+ "n_runs": 5,
+ "options": {
+  "fixed_age": null,
+  "margin": 0,
+  "periodic_k": 3,
+  "schedule": {
+   "0": "E1",
+   "4": "E2",
+   "8": "E4"
+  },
+  "schedule_overridden": false,
+  "stored_scoring": "as_recorded"
+ },
+ "policies": {
+  "as_run": {
+   "accepted": 15,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 0,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.0,
+   "false_accepts": 0,
+   "false_rejects": 0,
+   "final_acc": {
+    "mean": 0.733,
+    "per_run": [
+     0.73,
+     0.73,
+     0.73,
+     0.725,
+     0.75
+    ],
+    "sd": 0.009746794344808973
+   },
+   "name": "As run",
+   "per_run": [
+    {
+     "accepted": 4,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 0,
+     "seed": 1,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 0,
+     "seed": 2,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 0,
+     "seed": 3,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 5,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.725,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 0,
+     "seed": 4,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.75,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 0,
+     "seed": 5,
+     "total_calls": 4411
+    }
+   ],
+   "refreshes": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 4411.0,
+    "sd": 0.0
+   }
+  },
+  "env_triggered": {
+   "accepted": 16,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 2,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.125,
+   "false_accepts": 2,
+   "false_rejects": 2,
+   "final_acc": {
+    "mean": 0.725,
+    "per_run": [
+     0.73,
+     0.69,
+     0.73,
+     0.725,
+     0.75
+    ],
+    "sd": 0.021794494717703387
+   },
+   "name": "Environment-triggered",
+   "per_run": [
+    {
+     "accepted": 4,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 2,
+     "seed": 1,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 2,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 2,
+     "seed": 2,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 1,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 2,
+     "seed": 3,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 5,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.725,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 2,
+     "seed": 4,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 1,
+     "false_rejects": 0,
+     "final_acc": 0.75,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 2,
+     "seed": 5,
+     "total_calls": 4811
+    }
+   ],
+   "refreshes": {
+    "mean": 2.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 4811.0,
+    "sd": 0.0
+   }
+  },
+  "frozen": {
+   "accepted": 34,
+   "causes": {
+    "anyway": 3,
+    "no_drift": 4,
+    "stale": 6
+   },
+   "false_accept_rate_pooled": 0.38235294117647056,
+   "false_accepts": 13,
+   "false_rejects": 0,
+   "final_acc": {
+    "mean": 0.708,
+    "per_run": [
+     0.69,
+     0.71,
+     0.73,
+     0.725,
+     0.685
+    ],
+    "sd": 0.020186629238186336
+   },
+   "name": "Frozen",
+   "per_run": [
+    {
+     "accepted": 7,
+     "false_accepts": 4,
+     "false_rejects": 0,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 0,
+     "seed": 1,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 7,
+     "false_accepts": 3,
+     "false_rejects": 0,
+     "final_acc": 0.71,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 0,
+     "seed": 2,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 7,
+     "false_accepts": 2,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 0,
+     "seed": 3,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 5,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.725,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 0,
+     "seed": 4,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 8,
+     "false_accepts": 4,
+     "false_rejects": 0,
+     "final_acc": 0.685,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 0,
+     "seed": 5,
+     "total_calls": 4411
+    }
+   ],
+   "refreshes": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 4411.0,
+    "sd": 0.0
+   }
+  },
+  "per_batch": {
+   "accepted": 13,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 3,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.23076923076923078,
+   "false_accepts": 3,
+   "false_rejects": 11,
+   "final_acc": {
+    "mean": 0.697,
+    "per_run": [
+     0.67,
+     0.69,
+     0.73,
+     0.7,
+     0.695
+    ],
+    "sd": 0.021679483388678783
+   },
+   "name": "Per-batch",
+   "per_run": [
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 5,
+     "final_acc": 0.67,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 11,
+     "seed": 1,
+     "total_calls": 6611
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 2,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 11,
+     "seed": 2,
+     "total_calls": 6611
+    },
+    {
+     "accepted": 4,
+     "false_accepts": 1,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 11,
+     "seed": 3,
+     "total_calls": 6611
+    },
+    {
+     "accepted": 4,
+     "false_accepts": 1,
+     "false_rejects": 2,
+     "final_acc": 0.7,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 11,
+     "seed": 4,
+     "total_calls": 6611
+    },
+    {
+     "accepted": 2,
+     "false_accepts": 1,
+     "false_rejects": 2,
+     "final_acc": 0.695,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 11,
+     "seed": 5,
+     "total_calls": 6611
+    }
+   ],
+   "refreshes": {
+    "mean": 11.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 6611.0,
+    "sd": 0.0
+   }
+  },
+  "periodic": {
+   "accepted": 15,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 2,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.13333333333333333,
+   "false_accepts": 2,
+   "false_rejects": 3,
+   "final_acc": {
+    "mean": 0.725,
+    "per_run": [
+     0.73,
+     0.69,
+     0.73,
+     0.725,
+     0.75
+    ],
+    "sd": 0.021794494717703387
+   },
+   "name": "Every k rounds",
+   "per_run": [
+    {
+     "accepted": 4,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 2,
+     "seed": 1,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 2,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 3,
+     "seed": 2,
+     "total_calls": 5011
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 1,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 2,
+     "seed": 3,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 4,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.725,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 2,
+     "seed": 4,
+     "total_calls": 4811
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 1,
+     "false_rejects": 0,
+     "final_acc": 0.75,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 2,
+     "seed": 5,
+     "total_calls": 4811
+    }
+   ],
+   "refreshes": {
+    "mean": 2.2,
+    "sd": 0.44721359549995787
+   },
+   "total_calls": {
+    "mean": 4851.0,
+    "sd": 89.44271909999159
+   }
+  },
+  "stored_incumbent": {
+   "accepted": 8,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 0,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.0,
+   "false_accepts": 0,
+   "false_rejects": 8,
+   "final_acc": {
+    "mean": 0.712,
+    "per_run": [
+     0.73,
+     0.69,
+     0.73,
+     0.69,
+     0.72
+    ],
+    "sd": 0.020493901531919215
+   },
+   "name": "Stored incumbent",
+   "per_run": [
+    {
+     "accepted": 3,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed1",
+     "refreshes": 0,
+     "seed": 1,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 2,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed2",
+     "refreshes": 0,
+     "seed": 2,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.73,
+     "id": "gsm8k-qwen2.5-1.5b-seed3",
+     "refreshes": 0,
+     "seed": 3,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 4,
+     "final_acc": 0.69,
+     "id": "gsm8k-qwen2.5-1.5b-seed4",
+     "refreshes": 0,
+     "seed": 4,
+     "total_calls": 4411
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.72,
+     "id": "gsm8k-qwen2.5-1.5b-seed5",
+     "refreshes": 0,
+     "seed": 5,
+     "total_calls": 4411
+    }
+   ],
+   "refreshes": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 4411.0,
+    "sd": 0.0
+   }
+  }
+ },
+ "policy_tests": [
+  {
+   "a": "env_triggered",
+   "b": "frozen",
+   "errors_a": 4,
+   "errors_b": 13,
+   "fisher_p": 0.032564974949330444,
+   "n": 55
+  },
+  {
+   "a": "env_triggered",
+   "b": "stored_incumbent",
+   "errors_a": 4,
+   "errors_b": 8,
+   "fisher_p": 0.35966201288947147,
+   "n": 55
+  },
+  {
+   "a": "env_triggered",
+   "b": "per_batch",
+   "errors_a": 4,
+   "errors_b": 14,
+   "fisher_p": 0.01850247117470074,
+   "n": 55
+  },
+  {
+   "a": "env_triggered",
+   "b": "periodic",
+   "errors_a": 4,
+   "errors_b": 5,
+   "fisher_p": 1.0,
+   "n": 55
+  },
+  {
+   "a": "env_triggered",
+   "b": "as_run",
+   "errors_a": 4,
+   "errors_b": 0,
+   "fisher_p": 0.11815141901740547,
+   "n": 55
+  }
+ ],
+ "probe": {
+  "age": 3,
+  "by_env": {
+   "E1": {
+    "hi": 0.3867514777702161,
+    "lo": -0.6367514777702161,
+    "mean": -0.125,
+    "n_positive": 2,
+    "per_run": [
+     -0.12499999999999999,
+     0.37500000000000006,
+     -0.75,
+     0.0625,
+     -0.1875
+    ],
+    "same_sign": 3,
+    "sd": 0.41221581119602874
+   },
+   "E2": {
+    "hi": 1.4325646054025105,
+    "lo": -2.6075646054025103,
+    "mean": -0.5875,
+    "n_positive": 2,
+    "per_run": [
+     -2.2500000000000004,
+     1.7500000000000002,
+     0.37500000000000006,
+     -1.625,
+     -1.1875
+    ],
+    "same_sign": 3,
+    "sd": 1.627162023278567
+   },
+   "E3": {
+    "hi": 1.9754425691566353,
+    "lo": 0.6495574308433647,
+    "mean": 1.3125,
+    "n_positive": 5,
+    "per_run": [
+     1.7500000000000002,
+     0.8749999999999999,
+     0.625,
+     1.5000000000000002,
+     1.8125000000000002
+    ],
+    "same_sign": 5,
+    "sd": 0.5340002340823459
+   },
+   "E4": {
+    "hi": 3.0366444176596197,
+    "lo": 0.0383555823403805,
+    "mean": 1.5375,
+    "n_positive": 4,
+    "per_run": [
+     1.375,
+     2.9375000000000004,
+     2.5,
+     -0.06250000000000006,
+     0.9375000000000001
+    ],
+    "same_sign": 4,
+    "sd": 1.2075608162738638
+   }
+  },
+  "stored_env": "E1"
+ },
+ "runs": [
+  {
+   "id": "gsm8k-qwen2.5-1.5b-seed1",
+   "seed": 1,
+   "source": "measured"
+  },
+  {
+   "id": "gsm8k-qwen2.5-1.5b-seed2",
+   "seed": 2,
+   "source": "measured"
+  },
+  {
+   "id": "gsm8k-qwen2.5-1.5b-seed3",
+   "seed": 3,
+   "source": "measured"
+  },
+  {
+   "id": "gsm8k-qwen2.5-1.5b-seed4",
+   "seed": 4,
+   "source": "measured"
+  },
+  {
+   "id": "gsm8k-qwen2.5-1.5b-seed5",
+   "seed": 5,
+   "source": "measured"
+  }
+ ],
+ "schema": "driftaudit.study/v1",
+ "scorer_flips": [
+  {
+   "from_env": "E1",
+   "items": 11400,
+   "prompts": 57,
+   "right_to_wrong": 0,
+   "to_env": "E3",
+   "wrong_to_right": 638
+  },
+  {
+   "from_env": "E2",
+   "items": 11400,
+   "prompts": 57,
+   "right_to_wrong": 0,
+   "to_env": "E4",
+   "wrong_to_right": 640
+  }
+ ],
+ "source": "measured",
+ "tool": {
+  "name": "driftaudit",
+  "version": "0.1.0"
+ },
+ "verdict_flips": {
+  "flipped": 18,
+  "n": 55
+ }
+}

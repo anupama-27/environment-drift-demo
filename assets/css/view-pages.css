@@ -1,0 +1,494 @@
+/* Case study and Install. */
+@layer views {
+  /* Case study */
+  .cs-head {
+    max-width: var(--measure);
+  }
+
+  .cs-dek {
+    margin-top: var(--space-05);
+    color: var(--graphite);
+    font-size: var(--fs-heading);
+    line-height: 28px;
+  }
+
+  .cs-bench {
+    padding: var(--space-15) var(--space-2);
+    background: var(--bench);
+  }
+
+  /* "Apply change 1 of 2: round 4, ..." is longer than a phone is wide. */
+  .cs-change {
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .cs-run {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  .cs-run__note {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-05) var(--space-1);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .cs-run__line {
+    flex-basis: 100%;
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  /* The nine steps, numbered. The labels wrap inside their column. */
+  .cs-stepper {
+    margin-top: var(--space-3);
+  }
+
+  .cs-stepper__list {
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-15);
+  }
+
+  .cs-stepper__link {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-05);
+    color: var(--ink);
+    font: 500 var(--fs-small)/20px var(--font-sans);
+    text-decoration: none;
+  }
+
+  a.cs-stepper__link:hover .cs-stepper__label {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cs-stepper__n {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 20px;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-s);
+    font: 600 var(--fs-mono)/18px var(--font-cond);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cs-stepper__item.is-current .cs-stepper__n {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .cs-stepper__item.is-current .cs-stepper__label {
+    font-weight: 600;
+  }
+
+  .cs-stepper__item.is-locked .cs-stepper__link {
+    color: var(--graphite);
+  }
+
+  .cs-stepper__item.is-locked .cs-stepper__n {
+    border-color: var(--rule);
+  }
+
+  .cs-stepper__compact {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-1);
+  }
+
+  .cs-stepper__where {
+    font: 600 var(--fs-body)/24px var(--font-cond);
+  }
+
+  @media (max-width: 1200px) {
+    .cs-stepper__list {
+      grid-template-columns: repeat(5, auto);
+      justify-content: start;
+      column-gap: var(--space-3);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .cs-stepper__list {
+      grid-template-columns: repeat(3, auto);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cs-stepper__list {
+      display: none;
+    }
+
+    .cs-stepper__compact {
+      display: flex;
+    }
+  }
+
+  .cs-step {
+    margin-top: var(--space-4);
+  }
+
+  .cs-step__title {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-15);
+    font-size: var(--fs-title);
+    line-height: 32px;
+  }
+
+  .cs-step__title:focus {
+    outline: none;
+  }
+
+  .cs-step__title:focus-visible {
+    outline: var(--focus);
+    outline-offset: 4px;
+  }
+
+  .cs-step__n {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 28px;
+    border-radius: var(--radius-s);
+    background: var(--ink);
+    color: var(--paper);
+    font: 600 var(--fs-heading)/28px var(--font-cond);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cs-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-05) var(--space-3);
+    margin-top: var(--space-1);
+    font: 400 var(--fs-small)/24px var(--font-sans);
+  }
+
+  .cs-step__body {
+    margin-top: var(--space-3);
+  }
+
+  .cs-lede {
+    max-width: var(--measure);
+    font-size: 1.0625rem;
+    line-height: 26px;
+  }
+
+  .cs-text {
+    max-width: var(--measure);
+  }
+
+  .cs-note {
+    max-width: var(--measure);
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .cs-section > * + * {
+    margin-top: var(--space-15);
+  }
+
+  .cs-section > p:not(.cs-note) {
+    max-width: var(--measure);
+  }
+
+  /* Figures that stand on their own in the paper keep a width at which their text stays near 12px. */
+  .cs-figure {
+    max-width: 880px;
+  }
+
+  .cs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .cs-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    padding-top: var(--space-2);
+  }
+
+  .cs-cols {
+    align-items: start;
+  }
+
+  /* Step 1 */
+  @media (max-width: 1000px) {
+    .cs-qlist {
+      max-height: 340px;
+      overflow-y: auto;
+    }
+  }
+
+  .cs-qlist > li + li {
+    margin-top: 2px;
+  }
+
+  .cs-q {
+    display: block;
+    width: 100%;
+    padding: var(--space-1) var(--space-15);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+    text-align: left;
+  }
+
+  .cs-q:hover {
+    background: var(--bench);
+  }
+
+  .cs-q.is-selected {
+    background: var(--bench-2);
+  }
+
+  .cs-q__meta {
+    display: block;
+    margin-top: 2px;
+    color: var(--graphite);
+    font-size: var(--fs-micro);
+    line-height: 16px;
+  }
+
+  .cs-panel > * + * {
+    margin-top: var(--space-2);
+  }
+
+  .cs-panel h3 {
+    max-width: var(--measure);
+  }
+
+  .cs-trace {
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .cs-trace > li {
+    display: flex;
+    gap: var(--space-15);
+  }
+
+  .cs-trace__tick {
+    flex: none;
+    width: 56px;
+    color: var(--graphite);
+  }
+
+  .cs-raw {
+    max-height: 224px;
+    overflow: auto;
+    font: 400 var(--fs-micro)/16px var(--font-mono);
+    white-space: pre-wrap;
+  }
+
+  .cs-prompt {
+    max-width: var(--measure);
+    font-size: var(--fs-small);
+    white-space: pre-wrap;
+  }
+
+  /* Step 2 chart */
+  .cs-acc {
+    max-width: 520px;
+    container-type: inline-size;
+  }
+
+  .cs-acc svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .cs-acc__narrow {
+    display: none;
+  }
+
+  @container (max-width: 399px) {
+    .cs-acc__wide {
+      display: none;
+    }
+
+    .cs-acc__narrow {
+      display: block;
+    }
+  }
+
+  /* Step 6 */
+  .cs-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-15);
+    max-width: 1000px;
+  }
+
+  @media (max-width: 800px) {
+    .cs-options {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .cs-option {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-05);
+    padding: var(--space-15) var(--space-2);
+    border: 1px solid var(--graphite);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    text-align: left;
+  }
+
+  .cs-option:hover {
+    background: var(--bench);
+  }
+
+  .cs-option[aria-pressed="true"] {
+    border-color: var(--ink);
+    background: var(--bench-2);
+    outline: 1px solid var(--ink);
+  }
+
+  .cs-option[aria-pressed="true"]:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+  }
+
+  .cs-option__title {
+    font: 600 var(--fs-body)/24px var(--font-cond);
+  }
+
+  .cs-option__text {
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  /* Step 7 */
+  .cs-dash {
+    row-gap: var(--space-4);
+  }
+
+  .cs-bigline {
+    max-width: 40em;
+    font: 500 1.25rem/28px var(--font-sans);
+  }
+
+  /* Step 8 */
+  .cs-alarm {
+    color: var(--signal-red);
+    font-weight: 600;
+  }
+
+  /* Step 9 */
+  .cs-diagram {
+    max-width: 760px;
+  }
+
+  .cs-diagram__box {
+    fill: var(--paper);
+    stroke: var(--graphite);
+    shape-rendering: crispEdges;
+  }
+
+  .cs-diagram__link {
+    fill: none;
+    stroke: var(--graphite);
+    stroke-width: 1.5;
+  }
+
+  .cs-diagram__head {
+    fill: var(--graphite);
+  }
+
+  .cs-comps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-4);
+    max-width: 880px;
+  }
+
+  .cs-comps > li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .cs-comps code {
+    color: var(--graphite);
+  }
+
+  @media (max-width: 700px) {
+    .cs-comps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .cs-skeleton {
+    max-width: 720px;
+    margin-top: var(--space-4);
+  }
+
+  .cs-skeleton > i {
+    display: block;
+    height: 16px;
+    margin-bottom: var(--space-15);
+    background: var(--bench);
+  }
+
+  .cs-skeleton > i:nth-of-type(2) {
+    width: 85%;
+  }
+
+  .cs-skeleton > i:nth-of-type(3) {
+    width: 70%;
+  }
+
+  .cs-skeleton > i:nth-of-type(4) {
+    width: 40%;
+  }
+
+  .cs > .notice {
+    max-width: 880px;
+    margin-top: var(--space-3);
+  }
+
+  /* Install */
+  .install {
+    max-width: 880px;
+  }
+
+  .install-text {
+    max-width: var(--measure);
+  }
+
+  .install-section > * + * {
+    margin-top: var(--space-1);
+  }
+
+  .install-section > .install-text + .code {
+    margin-top: var(--space-3);
+  }
+}
