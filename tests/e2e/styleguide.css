@@ -1,0 +1,40 @@
+@layer views {
+  .sg {
+    padding-block: var(--space-4) var(--space-8);
+  }
+
+  #sg-body > section {
+    margin-top: var(--space-6);
+  }
+
+  #sg-body > section > h2 {
+    margin-bottom: var(--space-15);
+  }
+
+  #sg-body > section > * + * {
+    margin-top: var(--space-2);
+  }
+
+  .sg__bench {
+    padding: var(--space-2);
+    background: var(--bench);
+  }
+
+  .sg__swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-1);
+  }
+
+  .sg__swatch {
+    padding: var(--space-1);
+    border: 1px solid var(--rule);
+    font: 400 var(--fs-mono)/20px var(--font-mono);
+  }
+
+  .sg__chip {
+    height: 40px;
+    margin-bottom: var(--space-1);
+    border: 1px solid var(--rule);
+  }
+}

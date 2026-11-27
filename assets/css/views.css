@@ -1,0 +1,286 @@
+/* Shell and views. This layer wins over components whatever the selectors look like, so keep
+   view rules as plain single classes and add new views below, inside the same layer. */
+@layer views {
+  /* Shell */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* The header boxes have fixed sizes so nothing moves when the web fonts arrive. */
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    height: var(--header-h);
+  }
+
+  .wordmark {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 10px;
+    width: 148px;
+    color: var(--ink);
+    font: 600 1.25rem/24px var(--font-cond);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .wordmark svg {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 104px;
+  }
+
+  .site-nav a,
+  .site-header__repo {
+    color: var(--graphite);
+    font: 500 1rem/24px var(--font-sans);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-nav a:hover,
+  .site-header__repo:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  .site-nav a[aria-current="page"] {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+
+  .site-header__repo {
+    flex: none;
+    width: 50px;
+    margin-left: auto;
+  }
+
+  @media (max-width: 600px) {
+    .site-header__inner {
+      flex-wrap: wrap;
+      align-content: center;
+      gap: var(--space-1) var(--space-2);
+    }
+
+    .site-nav {
+      order: 3;
+      flex-basis: 100%;
+      grid-auto-columns: 96px;
+    }
+  }
+
+  main {
+    flex: 1 0 auto;
+    min-height: calc(100vh - var(--header-h));
+  }
+
+  main:focus {
+    outline: none;
+  }
+
+  .noscript {
+    padding-block: var(--space-4);
+  }
+
+  .site-footer {
+    padding-block: var(--space-3) var(--space-4);
+    background: var(--bench);
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .site-footer p {
+    max-width: 104ch;
+  }
+
+  .site-footer p + p {
+    margin-top: var(--space-1);
+  }
+
+  /* Run bar: the bench above every workbench view */
+  .runbar {
+    padding-top: var(--space-2);
+    background: var(--bench);
+  }
+
+  .runbar__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .picker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+    min-width: 0;
+  }
+
+  .picker__hint {
+    max-width: 46ch;
+    color: var(--graphite);
+    font: 400 var(--fs-mono)/16px var(--font-sans);
+  }
+
+  .facts {
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .facts__name {
+    color: var(--ink);
+    font: 400 var(--fs-mono)/20px var(--font-mono);
+  }
+
+  .facts__title {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .facts__note,
+  .picker__pool {
+    max-width: 104ch;
+    color: var(--graphite);
+    font: 400 var(--fs-mono)/16px var(--font-sans);
+  }
+
+  .facts__note {
+    flex-basis: 100%;
+  }
+
+  .picker__pool {
+    flex-basis: 100%;
+    color: var(--ink);
+  }
+
+  .facts .tag {
+    margin-inline: var(--space-05);
+  }
+
+  .runbar .ruler {
+    margin-top: var(--space-1);
+  }
+
+  .runbar__blank {
+    height: 114px;
+  }
+
+  .runbar__key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-05) var(--space-2);
+    margin-top: var(--space-05);
+  }
+
+  .runbar__under {
+    font: 500 var(--fs-mono)/20px var(--font-sans);
+  }
+
+  .runbar__note {
+    margin-top: var(--space-05);
+    color: var(--graphite);
+    font: 400 var(--fs-mono)/20px var(--font-sans);
+  }
+
+  .runbar__reading {
+    margin-top: var(--space-1);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .runbar .tabs {
+    margin-top: var(--space-2);
+  }
+
+  .view {
+    padding-block: var(--space-4) var(--space-8);
+  }
+
+  .view h1:focus {
+    outline: none;
+  }
+
+  .view > .notice {
+    margin-bottom: var(--space-3);
+  }
+
+  /* Summary */
+  .verdict {
+    max-width: 24em;
+    font: 600 var(--fs-display)/var(--lh-display) var(--font-cond);
+    text-wrap: balance;
+  }
+
+  .summary__run-note {
+    max-width: var(--measure);
+    margin-top: var(--space-1);
+    color: var(--graphite);
+  }
+
+  .summary > .notice {
+    margin-top: var(--space-2);
+  }
+
+  .summary__policy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-15);
+    margin-top: var(--space-3);
+  }
+
+  .summary__lede {
+    max-width: 78ch;
+    margin-top: var(--space-2);
+  }
+
+  .summary > .readouts,
+  .summary__grid,
+  .summary > .summary__section {
+    margin-top: var(--space-4);
+  }
+
+  /* The chart and the table sit side by side only when both have room. */
+  @media (max-width: 1319px) {
+    .summary__grid > * {
+      grid-column: 1 / -1;
+    }
+
+    .summary__grid .chart {
+      max-width: 760px;
+    }
+  }
+
+  .summary__section > h2 {
+    margin-bottom: var(--space-05);
+  }
+
+  .summary__note {
+    max-width: var(--measure);
+    margin-bottom: var(--space-15);
+    color: var(--graphite);
+    font: 400 var(--fs-small)/20px var(--font-sans);
+  }
+
+  .summary__section > h2 + .ledger-wrap,
+  .summary__section > h2 + .chart {
+    margin-top: var(--space-15);
+  }
+}
