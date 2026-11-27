@@ -33,6 +33,20 @@
      "url": "data/runs/paper/seed5.json"
     }
    ]
+  },
+  {
+   "id": "smoke",
+   "title": "Smoke run",
+   "source": "measured",
+   "note": "One short run recorded with driftaudit run on an M1 laptop: Qwen2.5-0.5B-Instruct, 40 GSM8K items, 4 rounds, one seed. It shows the recorder working from start to finish. Its accuracy figures are not results of the paper.",
+   "default": "gsm8k-qwen2.5-0.5b-instruct-seed1",
+   "runs": [
+    {
+     "id": "gsm8k-qwen2.5-0.5b-instruct-seed1",
+     "label": "Seed 1",
+     "url": "data/runs/smoke/smoke-qwen2.5-0.5b.json"
+    }
+   ]
   }
  ]
 }
