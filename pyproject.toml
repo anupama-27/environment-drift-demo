@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "driftaudit"
+version = "0.1.0"
+description = "Audit stale references in self-improving LLM loops"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Mandar Parikh" },
+  { name = "Nischae Tiwari" },
+  { name = "Anupama Koley" },
+  { name = "Mohit Baid" },
+]
+keywords = ["llm", "evaluation", "prompt optimization", "self-improving agents", "drift"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+hf = ["torch", "transformers>=4.43", "accelerate"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+driftaudit = "driftaudit.cli:main"
+
+[project.urls]
+Workbench = "https://anupama-27.github.io/environment-drift-demo/"
+Repository = "https://github.com/anupama-27/environment-drift-demo"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/driftaudit"]
+
+# The site at the repository root is the same UI that `driftaudit demo` serves.
+[tool.hatch.build.targets.wheel.force-include]
+"index.html" = "driftaudit/web/index.html"
+"favicon.svg" = "driftaudit/web/favicon.svg"
+"assets" = "driftaudit/web/assets"
+"data" = "driftaudit/web/data"
+"replay" = "driftaudit/web/replay"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src", "tests", "docs", "examples", "scripts",
+  "index.html", "favicon.svg", "assets", "data", "replay",
+  "README.md", "LICENSE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+addopts = "-q"
