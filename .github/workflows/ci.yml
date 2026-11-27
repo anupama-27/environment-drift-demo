@@ -43,6 +43,19 @@ jobs:
         env:
           DRIFT_SEEDS: "1,2,3,4,5"
         run: python -m pytest tests
+      - name: Run the Table 5 scorer tests
+        working-directory: toolkit/gt_audit
+        run: python -m pytest test_gt_scorer.py
+      - name: Check that Table 5 and Appendix D reproduce
+        working-directory: toolkit/gt_audit
+        run: |
+          cp gt_tables_output.txt "$RUNNER_TEMP/gt_tables_expected.txt"
+          cp audit_results.txt "$RUNNER_TEMP/audit_expected.txt"
+          python gt_tables.py > /dev/null
+          python score_audit.py > /dev/null
+          # One line outside Table 5 (-0.125 pp) rounds to -0.12 here and -0.13 in the recorded file.
+          diff <(grep -v "inflation -0.1[23] " "$RUNNER_TEMP/gt_tables_expected.txt") <(grep -v "inflation -0.1[23] " gt_tables_output.txt)
+          diff "$RUNNER_TEMP/audit_expected.txt" audit_results.txt
 
   javascript:
     runs-on: ubuntu-latest

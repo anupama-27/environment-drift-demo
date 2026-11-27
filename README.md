@@ -94,6 +94,7 @@ toolkit/                        The paper's experiment scripts (unchanged)
   runs/                         The five saved runs (run_seed1 … run_seed5, JSON)
   results/                      Generated tables in Markdown, including table7_trend.md and stats.md
   tests/                        23 tests for answer extraction, reference age, replay export and the backend
+  gt_audit/                     Independent scorer behind Table 5 and Appendix D, its 60 tests, audit labels and outputs
 index.html, assets/, data/      The workbench: plain HTML, CSS and JavaScript, no build step
                                 data/ holds the five paper runs as run logs, their raw outputs and the GSM8K sample
 replay/
@@ -335,6 +336,8 @@ These read only the saved runs and make no model calls, and together take a few 
 | Figure 5 and Table 4, reference age | `table7.py` | `results/table7.md`, `results/table7_trend.md` |
 | Figure 6, false accepts by reference | `stats.py` | `results/stats.md` |
 | Appendix C, ablations | `table8.py`, `stats.py` (tests and 2×2 effects) | `results/table8.md`, `results/stats.md` |
+| Table 5, independent scorer | `gt_audit/gt_tables.py` | `gt_audit/gt_tables_output.txt` |
+| Appendix D, scorer checks | `gt_audit/score_audit.py` | `gt_audit/audit_results.txt`, `gt_audit/spot-check-mandar.xlsx` |
 | Appendix D, per-seed results | `table9.py`, `table6.py` | `results/table9.md`, `results/table6_decisions.csv` |
 | Statistics in the Setup and Evaluation text | `stats.py` | `results/stats.md` |
 
@@ -384,7 +387,22 @@ Figure 6 applies the frozen policy's acceptance rule to the same 55 candidates w
 
 For Appendix C, `table8.py` switches parts of the environment schedule off: pooled false accepts are 18/37 (48.6%) with no decoding changes and 12/30 (40.0%) with no extraction changes. `results/stats.md` gives the paired tests (removing extraction drift lowers drift inflation by 0.59 ± 0.25 pp, p = 0.006; removing decoding drift by 0.89 ± 1.19 pp, p = 0.169) and the 2×2 factorial over rounds 8–10 (+1.33, +1.90 and +3.50 pp, interaction +0.27 ± 1.02 pp, p = 0.59).
 
-## 14. Export the Replay
+## 14. Reproduce Table 5 and Appendix D (Independent Scorer)
+
+Table 5 re-grades the frozen, per-batch and environment-triggered policies with an independent scorer that credits only a committed final answer, while the acceptance rule stays the same. The scorer, its tests, the audit labels and the outputs of the original audit are in `toolkit/gt_audit/`, whose README lists every file.
+
+~~~bash
+cd gt_audit
+python3 -m pytest test_gt_scorer.py
+python3 gt_tables.py
+python3 score_audit.py
+~~~
+
+`gt_tables.py` reads the saved runs and the committed scorer labels (`gt_labels.json`) and writes `gt_tables_output.txt`. Expected, in section (iii) under "GT=gt": false accepts 17/34, 4/13 and 4/16 with drift and 19/37, 3/11 and 2/12 without, and final accuracy 70.6%, 69.7% and 72.3%. `score_audit.py` writes `audit_results.txt`: the lenient extractor's last-number fallback gives false credit in 4 of 123 cases (3.3%, 95% CI 1.3–8.1%), and the scorer agrees with the audit labels on 161 of 198 items (81%). The audit labels were written by an AI annotator; one author blind-checked 29 of them and agreed on 27 of the 28 unambiguous cases (`spot-check-mandar.xlsx`).
+
+The committed `gt_scores.csv` and `gt_labels.json` come from `rescore.py`, which re-scores every decoded output and needs `all_outputs.csv` (65 MB, not in the repository) as input. Run against this toolkit, one line of `gt_tables_output.txt` outside Table 5 (Unchanged drift inflation, −0.125 pp) prints −0.12 rather than the recorded −0.13.
+
+## 15. Export the Replay
 
 ~~~bash
 python3 export_replay.py
@@ -392,7 +410,7 @@ python3 export_replay.py
 
 This writes `seed1.json` … `seed5.json` and `all_seeds.json` to `toolkit/demo/replay/` from the saved runs. Copy them to `replay/` at the repository root to update the Case study page of the workbench.
 
-## 15. Figures
+## 16. Figures
 
 Every figure is drawn from the outputs above.
 
