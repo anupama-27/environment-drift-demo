@@ -1,0 +1,514 @@
+{
+ "age": {
+  "ages": [
+   0,
+   1,
+   2,
+   4,
+   7
+  ],
+  "by_env": {
+   "base": [
+    {
+     "age": 0,
+     "false_accepts": 0,
+     "hi": 2.368037473185157,
+     "lo": -2.977412473185157,
+     "mean": -0.30468750000000006,
+     "pairs": 16,
+     "per_run": [
+      -1.5000000000000002,
+      0.5859375,
+      0.0
+     ],
+     "promoted": 6
+    },
+    {
+     "age": 1,
+     "false_accepts": 3,
+     "hi": 4.367320491239583,
+     "lo": -3.718510967430059,
+     "mean": 0.32440476190476186,
+     "pairs": 13,
+     "per_run": [
+      -1.25,
+      0.2232142857142857,
+      2.0
+     ],
+     "promoted": 8
+    },
+    {
+     "age": 2,
+     "false_accepts": 2,
+     "hi": 1.2284201388888887,
+     "lo": -1.6103645833333333,
+     "mean": -0.19097222222222224,
+     "pairs": 10,
+     "per_run": [
+      -0.8333333333333334,
+      0.26041666666666663,
+      0.0
+     ],
+     "promoted": 6
+    },
+    {
+     "age": 4,
+     "false_accepts": 3,
+     "hi": 8.030859375,
+     "lo": -6.858984375,
+     "mean": 0.5859375,
+     "pairs": 5,
+     "per_run": [
+      0.0,
+      1.171875,
+      null
+     ],
+     "promoted": 4
+    },
+    {
+     "age": 7,
+     "false_accepts": 1,
+     "hi": null,
+     "lo": null,
+     "mean": -1.5625,
+     "pairs": 1,
+     "per_run": [
+      null,
+      -1.5625,
+      null
+     ],
+     "promoted": 1
+    }
+   ],
+   "warm-lenient": [
+    {
+     "age": 0,
+     "false_accepts": 2,
+     "hi": 17.241390624999994,
+     "lo": -9.163265624999996,
+     "mean": 4.0390625,
+     "pairs": 13,
+     "per_run": [
+      3.0000000000000004,
+      5.078125,
+      null
+     ],
+     "promoted": 9
+    },
+    {
+     "age": 1,
+     "false_accepts": 3,
+     "hi": 17.06549107142858,
+     "lo": -5.056562500000005,
+     "mean": 6.0044642857142865,
+     "pairs": 11,
+     "per_run": [
+      6.875000000000001,
+      5.133928571428571,
+      null
+     ],
+     "promoted": 9
+    },
+    {
+     "age": 2,
+     "false_accepts": 3,
+     "hi": 12.258020833333333,
+     "lo": 0.3461458333333338,
+     "mean": 6.302083333333333,
+     "pairs": 9,
+     "per_run": [
+      5.833333333333333,
+      6.770833333333333,
+      null
+     ],
+     "promoted": 8
+    },
+    {
+     "age": 4,
+     "false_accepts": 2,
+     "hi": 36.229609374999995,
+     "lo": -26.307734374999995,
+     "mean": 4.9609375,
+     "pairs": 5,
+     "per_run": [
+      2.5,
+      7.421875,
+      null
+     ],
+     "promoted": 4
+    },
+    {
+     "age": 7,
+     "false_accepts": 1,
+     "hi": null,
+     "lo": null,
+     "mean": 12.5,
+     "pairs": 1,
+     "per_run": [
+      null,
+      12.5,
+      null
+     ],
+     "promoted": 1
+    }
+   ]
+  },
+  "stored_env": "base"
+ },
+ "n_decisions": 16,
+ "n_runs": 3,
+ "options": {
+  "fixed_age": null,
+  "margin": 1,
+  "periodic_k": 2,
+  "schedule": {
+   "0": "base",
+   "3": "warm-lenient"
+  },
+  "schedule_overridden": false,
+  "stored_scoring": "as_recorded"
+ },
+ "policies": {
+  "as_run": {
+   "accepted": 13,
+   "causes": {
+    "anyway": 2,
+    "no_drift": 3,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.46153846153846156,
+   "false_accepts": 6,
+   "false_rejects": 0,
+   "final_acc": {
+    "mean": 0.5547916666666667,
+    "per_run": [
+     0.7,
+     0.484375,
+     0.48
+    ],
+    "sd": 0.12577312991387837
+   },
+   "name": "As run",
+   "per_run": [
+    {
+     "accepted": 3,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.7,
+     "id": "synthetic-a",
+     "refreshes": 0,
+     "seed": 11,
+     "total_calls": 265
+    },
+    {
+     "accepted": 7,
+     "false_accepts": 4,
+     "false_rejects": 0,
+     "final_acc": 0.484375,
+     "id": "synthetic-b",
+     "refreshes": 2,
+     "seed": 12,
+     "total_calls": 808
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 2,
+     "false_rejects": 0,
+     "final_acc": 0.48,
+     "id": "synthetic-c",
+     "refreshes": 0,
+     "seed": 13,
+     "total_calls": 78
+    }
+   ],
+   "refreshes": {
+    "mean": 0.6666666666666666,
+    "sd": 1.1547005383792517
+   },
+   "total_calls": {
+    "mean": 383.6666666666667,
+    "sd": 379.19168415635556
+   }
+  },
+  "frozen": {
+   "accepted": 11,
+   "causes": {
+    "anyway": 3,
+    "no_drift": 2,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.45454545454545453,
+   "false_accepts": 5,
+   "false_rejects": 1,
+   "final_acc": {
+    "mean": 0.648125,
+    "per_run": [
+     0.7,
+     0.484375,
+     0.76
+    ],
+    "sd": 0.14495015306994333
+   },
+   "name": "Frozen",
+   "per_run": [
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.7,
+     "id": "synthetic-a",
+     "refreshes": 0,
+     "seed": 11,
+     "total_calls": 265
+    },
+    {
+     "accepted": 8,
+     "false_accepts": 5,
+     "false_rejects": 0,
+     "final_acc": 0.484375,
+     "id": "synthetic-b",
+     "refreshes": 0,
+     "seed": 12,
+     "total_calls": 680
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.76,
+     "id": "synthetic-c",
+     "refreshes": 0,
+     "seed": 13,
+     "total_calls": 78
+    }
+   ],
+   "refreshes": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 341.0,
+    "sd": 308.11199262605794
+   }
+  },
+  "periodic": {
+   "accepted": 6,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 0,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.0,
+   "false_accepts": 0,
+   "false_rejects": 1,
+   "final_acc": {
+    "mean": 0.7002083333333333,
+    "per_run": [
+     0.7,
+     0.640625,
+     0.76
+    ],
+    "sd": 0.05968777268698618
+   },
+   "name": "Every k rounds",
+   "per_run": [
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.7,
+     "id": "synthetic-a",
+     "refreshes": 1,
+     "seed": 11,
+     "total_calls": 305
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.640625,
+     "id": "synthetic-b",
+     "refreshes": 3,
+     "seed": 12,
+     "total_calls": 872
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.76,
+     "id": "synthetic-c",
+     "refreshes": 0,
+     "seed": 13,
+     "total_calls": 78
+    }
+   ],
+   "refreshes": {
+    "mean": 1.3333333333333333,
+    "sd": 1.5275252316519468
+   },
+   "total_calls": {
+    "mean": 418.3333333333333,
+    "sd": 408.95272750445537
+   }
+  },
+  "stored_incumbent": {
+   "accepted": 6,
+   "causes": {
+    "anyway": 0,
+    "no_drift": 0,
+    "stale": 0
+   },
+   "false_accept_rate_pooled": 0.0,
+   "false_accepts": 0,
+   "false_rejects": 1,
+   "final_acc": {
+    "mean": 0.7002083333333333,
+    "per_run": [
+     0.7,
+     0.640625,
+     0.76
+    ],
+    "sd": 0.05968777268698618
+   },
+   "name": "Stored incumbent",
+   "per_run": [
+    {
+     "accepted": 2,
+     "false_accepts": 0,
+     "false_rejects": 1,
+     "final_acc": 0.7,
+     "id": "synthetic-a",
+     "refreshes": 0,
+     "seed": 11,
+     "total_calls": 265
+    },
+    {
+     "accepted": 3,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.640625,
+     "id": "synthetic-b",
+     "refreshes": 0,
+     "seed": 12,
+     "total_calls": 680
+    },
+    {
+     "accepted": 1,
+     "false_accepts": 0,
+     "false_rejects": 0,
+     "final_acc": 0.76,
+     "id": "synthetic-c",
+     "refreshes": 0,
+     "seed": 13,
+     "total_calls": 78
+    }
+   ],
+   "refreshes": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "total_calls": {
+    "mean": 341.0,
+    "sd": 308.11199262605794
+   }
+  }
+ },
+ "policy_tests": [],
+ "probe": {
+  "age": 1,
+  "by_env": {
+   "base": {
+    "hi": 4.367320491239583,
+    "lo": -3.718510967430059,
+    "mean": 0.32440476190476186,
+    "n_positive": 2,
+    "per_run": [
+     -1.25,
+     0.2232142857142857,
+     2.0
+    ],
+    "same_sign": 2,
+    "sd": 1.6273612488792222
+   }
+  },
+  "stored_env": "base"
+ },
+ "runs": [
+  {
+   "id": "synthetic-a",
+   "seed": 11,
+   "source": "synthetic"
+  },
+  {
+   "id": "synthetic-b",
+   "seed": 12,
+   "source": "synthetic"
+  },
+  {
+   "id": "synthetic-c",
+   "seed": 13,
+   "source": "synthetic"
+  }
+ ],
+ "schema": "driftaudit.study/v1",
+ "scorer_flips": [
+  {
+   "from_env": "base",
+   "items": 576,
+   "prompts": 9,
+   "right_to_wrong": 14,
+   "to_env": "base-exact",
+   "wrong_to_right": 16
+  },
+  {
+   "from_env": "base",
+   "items": 676,
+   "prompts": 13,
+   "right_to_wrong": 0,
+   "to_env": "base-lenient",
+   "wrong_to_right": 83
+  },
+  {
+   "from_env": "warm-lenient",
+   "items": 576,
+   "prompts": 9,
+   "right_to_wrong": 47,
+   "to_env": "warm",
+   "wrong_to_right": 0
+  },
+  {
+   "from_env": "warm-lenient",
+   "items": 576,
+   "prompts": 9,
+   "right_to_wrong": 59,
+   "to_env": "warm-exact",
+   "wrong_to_right": 17
+  },
+  {
+   "from_env": "base-exact",
+   "items": 576,
+   "prompts": 9,
+   "right_to_wrong": 13,
+   "to_env": "base-lenient",
+   "wrong_to_right": 80
+  },
+  {
+   "from_env": "warm",
+   "items": 576,
+   "prompts": 9,
+   "right_to_wrong": 14,
+   "to_env": "warm-exact",
+   "wrong_to_right": 19
+  }
+ ],
+ "source": "synthetic",
+ "tool": {
+  "name": "driftaudit",
+  "version": "0.1.0"
+ },
+ "verdict_flips": {
+  "flipped": 0,
+  "n": 8
+ }
+}

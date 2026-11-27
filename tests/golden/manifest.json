@@ -1,0 +1,336 @@
+[
+ {
+  "kind": "audit",
+  "name": "paper-seed1",
+  "options": {},
+  "result": "audit-paper-seed1.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed2",
+  "options": {},
+  "result": "audit-paper-seed2.json",
+  "run": "../../toolkit/runs/run_seed2_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed3",
+  "options": {},
+  "result": "audit-paper-seed3.json",
+  "run": "../../toolkit/runs/run_seed3_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed4",
+  "options": {},
+  "result": "audit-paper-seed4.json",
+  "run": "../../toolkit/runs/run_seed4_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5",
+  "options": {},
+  "result": "audit-paper-seed5.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "study",
+  "name": "paper-study",
+  "options": {},
+  "result": "study-paper.json",
+  "runs": [
+   "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed2_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed3_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed4_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+  ]
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-no-decoding-change",
+  "options": {
+   "schedule": {
+    "0": "E1",
+    "4": "E1",
+    "8": "E3"
+   }
+  },
+  "result": "audit-paper-seed1-no-decoding-change.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-no-extraction-change",
+  "options": {
+   "schedule": {
+    "0": "E1",
+    "4": "E2",
+    "8": "E2"
+   }
+  },
+  "result": "audit-paper-seed1-no-extraction-change.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-fixed-age-1",
+  "options": {
+   "fixed_age": 1
+  },
+  "result": "audit-paper-seed1-fixed-age-1.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-rescore",
+  "options": {
+   "stored_scoring": "rescore"
+  },
+  "result": "audit-paper-seed1-rescore.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-margin-2",
+  "options": {
+   "margin": 2
+  },
+  "result": "audit-paper-seed1-margin-2.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed1-periodic-2",
+  "options": {
+   "periodic_k": 2
+  },
+  "result": "audit-paper-seed1-periodic-2.json",
+  "run": "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-no-decoding-change",
+  "options": {
+   "schedule": {
+    "0": "E1",
+    "4": "E1",
+    "8": "E3"
+   }
+  },
+  "result": "audit-paper-seed5-no-decoding-change.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-no-extraction-change",
+  "options": {
+   "schedule": {
+    "0": "E1",
+    "4": "E2",
+    "8": "E2"
+   }
+  },
+  "result": "audit-paper-seed5-no-extraction-change.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-fixed-age-1",
+  "options": {
+   "fixed_age": 1
+  },
+  "result": "audit-paper-seed5-fixed-age-1.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-rescore",
+  "options": {
+   "stored_scoring": "rescore"
+  },
+  "result": "audit-paper-seed5-rescore.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-margin-2",
+  "options": {
+   "margin": 2
+  },
+  "result": "audit-paper-seed5-margin-2.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "audit",
+  "name": "paper-seed5-periodic-2",
+  "options": {
+   "periodic_k": 2
+  },
+  "result": "audit-paper-seed5-periodic-2.json",
+  "run": "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+ },
+ {
+  "kind": "study",
+  "name": "paper-study-rescore",
+  "options": {
+   "ages": [
+    0,
+    2,
+    4
+   ],
+   "probe_age": 1,
+   "stored_scoring": "rescore"
+  },
+  "result": "study-paper-rescore.json",
+  "runs": [
+   "../../toolkit/runs/run_seed1_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed2_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed3_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed4_hf_Qwen2.5-1.5B-Instruct_n200_r11.json",
+   "../../toolkit/runs/run_seed5_hf_Qwen2.5-1.5B-Instruct_n200_r11.json"
+  ]
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-a",
+  "options": {},
+  "result": "audit-synthetic-a.json",
+  "run": "runs/synthetic-a.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-b",
+  "options": {},
+  "result": "audit-synthetic-b.json",
+  "run": "runs/synthetic-b.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-c",
+  "options": {},
+  "result": "audit-synthetic-c.json",
+  "run": "runs/synthetic-c.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-a-rescore",
+  "options": {
+   "stored_scoring": "rescore"
+  },
+  "result": "audit-synthetic-a-rescore.json",
+  "run": "runs/synthetic-a.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-a-margin-1",
+  "options": {
+   "margin": 1,
+   "policies": [
+    "frozen",
+    "env_triggered",
+    "as_run"
+   ]
+  },
+  "result": "audit-synthetic-a-margin-1.json",
+  "run": "runs/synthetic-a.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-b-rescore",
+  "options": {
+   "stored_scoring": "rescore"
+  },
+  "result": "audit-synthetic-b-rescore.json",
+  "run": "runs/synthetic-b.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-b-what-if",
+  "options": {
+   "margin": 1,
+   "periodic_k": 2,
+   "schedule": {
+    "0": "warm",
+    "2": "base-lenient",
+    "5": "warm-exact"
+   }
+  },
+  "result": "audit-synthetic-b-what-if.json",
+  "run": "runs/synthetic-b.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-b-fixed-age-2",
+  "options": {
+   "fixed_age": 2,
+   "policies": [
+    "frozen",
+    "per_batch"
+   ]
+  },
+  "result": "audit-synthetic-b-fixed-age-2.json",
+  "run": "runs/synthetic-b.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-c-periodic-1",
+  "options": {
+   "periodic_k": 1
+  },
+  "result": "audit-synthetic-c-periodic-1.json",
+  "run": "runs/synthetic-c.json"
+ },
+ {
+  "kind": "audit",
+  "name": "synthetic-c-rescore",
+  "options": {
+   "stored_scoring": "rescore"
+  },
+  "result": "audit-synthetic-c-rescore.json",
+  "run": "runs/synthetic-c.json"
+ },
+ {
+  "kind": "study",
+  "name": "synthetic-study-a-b",
+  "options": {},
+  "result": "study-synthetic-a-b.json",
+  "runs": [
+   "runs/synthetic-a.json",
+   "runs/synthetic-b.json"
+  ]
+ },
+ {
+  "kind": "study",
+  "name": "synthetic-study-b-c",
+  "options": {},
+  "result": "study-synthetic-b-c.json",
+  "runs": [
+   "runs/synthetic-b.json",
+   "runs/synthetic-c.json"
+  ]
+ },
+ {
+  "kind": "study",
+  "name": "synthetic-study-all",
+  "options": {
+   "ages": [
+    0,
+    1,
+    2,
+    4,
+    7
+   ],
+   "margin": 1,
+   "periodic_k": 2,
+   "probe_age": 1
+  },
+  "result": "study-synthetic-all.json",
+  "runs": [
+   "runs/synthetic-a.json",
+   "runs/synthetic-b.json",
+   "runs/synthetic-c.json"
+  ]
+ }
+]

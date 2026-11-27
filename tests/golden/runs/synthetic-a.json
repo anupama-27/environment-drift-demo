@@ -1,0 +1,234 @@
+{
+ "candidates": [
+  {
+   "accepted": false,
+   "env": "base",
+   "id": "C1",
+   "losses": 12,
+   "note": "synthetic",
+   "parent": "379bd586bd8d",
+   "prompt": "1e339f15a977",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "379bd586bd8d"
+   },
+   "round": 0,
+   "wins": 8
+  },
+  {
+   "accepted": true,
+   "env": "base",
+   "id": "C2",
+   "losses": 11,
+   "note": "synthetic",
+   "parent": "379bd586bd8d",
+   "prompt": "511496c40a2a",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "379bd586bd8d"
+   },
+   "round": 1,
+   "wins": 12
+  },
+  {
+   "accepted": true,
+   "env": "base",
+   "id": "C3",
+   "losses": 9,
+   "note": "synthetic",
+   "parent": "511496c40a2a",
+   "prompt": "bd25773481f1",
+   "reference": {
+    "env": "base",
+    "pass": "current",
+    "prompt": "511496c40a2a"
+   },
+   "round": 2,
+   "wins": 12
+  },
+  {
+   "accepted": true,
+   "env": "warm-lenient",
+   "id": "C4",
+   "losses": 8,
+   "note": "synthetic",
+   "parent": "bd25773481f1",
+   "prompt": "6470a6bef833",
+   "reference": {
+    "env": "warm-lenient",
+    "pass": "current",
+    "prompt": "bd25773481f1"
+   },
+   "round": 3,
+   "wins": 11
+  },
+  {
+   "accepted": false,
+   "env": "warm-lenient",
+   "id": "C5",
+   "losses": 15,
+   "note": "synthetic",
+   "parent": "6470a6bef833",
+   "prompt": "0eb4d577c54d",
+   "reference": {
+    "env": "warm-lenient",
+    "pass": "current",
+    "prompt": "6470a6bef833"
+   },
+   "round": 4,
+   "wins": 2
+  }
+ ],
+ "cost": {
+  "n_dev": 12,
+  "proposal_calls": 1
+ },
+ "created": "2026-11-27T00:00:00Z",
+ "environments": {
+  "base": {
+   "decoding": "greedy-0.0",
+   "detail": {
+    "model": "synthetic",
+    "scorer_version": "1",
+    "temperature": 0.0
+   },
+   "fingerprint": "model=synthetic;decode=greedy-0.0;extract=strict@1",
+   "name": "Baseline",
+   "scorer": "strict"
+  },
+  "warm-lenient": {
+   "decoding": "sample-0.7",
+   "detail": {
+    "model": "synthetic",
+    "scorer_version": "1",
+    "temperature": 0.7
+   },
+   "fingerprint": "model=synthetic;decode=sample-0.7;extract=lenient@1",
+   "name": "Sampling, lenient scorer",
+   "scorer": "lenient"
+  }
+ },
+ "id": "synthetic-a",
+ "labels": {
+  "0eb4d577c54d": {
+   "base": {
+    "current": "0001010000100000101011001000010010000001",
+    "rerun": "0001010000100000101011001000010010000001"
+   },
+   "warm-lenient": {
+    "current": "1001010000111010101011001000010110000000",
+    "rerun": "1001011000110100110011001000011110000101"
+   }
+  },
+  "1e339f15a977": {
+   "base": {
+    "current": "1111010100111010001000000001011000000000",
+    "rerun": "1111010100111110001000000001011000000000"
+   },
+   "warm-lenient": {
+    "current": "1011010100011011001000100001010000000010",
+    "rerun": "1111010100101011001000100101011110010110"
+   }
+  },
+  "379bd586bd8d": {
+   "base": {
+    "current": "0101010010000111110100101000011000101011",
+    "rerun": "0101010010000111110100101000010000101011"
+   },
+   "warm-lenient": {
+    "current": "1101010010000111110101101000011010101011",
+    "rerun": "0101010110000111110101101000011000111011"
+   }
+  },
+  "511496c40a2a": {
+   "base": {
+    "current": "0100011011011000001010010111001001111010",
+    "rerun": "0100011011010000001010010111001001111010"
+   },
+   "warm-lenient": {
+    "current": "0100111111011001101010011100001011111011",
+    "rerun": "0110101111011001101010011111000011111011"
+   }
+  },
+  "6470a6bef833": {
+   "base": {
+    "current": "0001111000111001111001011011111100011101",
+    "rerun": "0001111000111011111001011011111100011101"
+   },
+   "warm-lenient": {
+    "current": "1001001100111001111111011111111110010111",
+    "rerun": "1001001100111001010101001010111010111001"
+   }
+  },
+  "bd25773481f1": {
+   "base": {
+    "current": "0101101100000101011101111011000011111001",
+    "rerun": "0101101100000101001101111011000011111001"
+   },
+   "warm-lenient": {
+    "current": "0101111001011100111101111011100011110001",
+    "rerun": "0101101101001101111101101011000011111001"
+   }
+  }
+ },
+ "meta": {
+  "note": "Labels drawn from sha1 digests by driftaudit._golden. Not a measurement."
+ },
+ "model": {
+  "backend": "sha1",
+  "id": "synthetic"
+ },
+ "prompts": {
+  "0eb4d577c54d": "Synthetic prompt 5 of synthetic-a. Give the final answer as a number.",
+  "1e339f15a977": "Synthetic prompt 1 of synthetic-a. Give the final answer as a number.",
+  "379bd586bd8d": "Synthetic prompt 0 of synthetic-a. Give the final answer as a number.",
+  "511496c40a2a": "Synthetic prompt 2 of synthetic-a. Give the final answer as a number.",
+  "6470a6bef833": "Synthetic prompt 4 of synthetic-a. Give the final answer as a number.",
+  "bd25773481f1": "Synthetic prompt 3 of synthetic-a. Give the final answer as a number."
+ },
+ "schedule": {
+  "0": "base",
+  "3": "warm-lenient"
+ },
+ "schema": "driftaudit.run/v1",
+ "seed": 11,
+ "snapshots": [
+  {
+   "env": "base",
+   "prompt": "379bd586bd8d",
+   "round": 0
+  },
+  {
+   "env": "base",
+   "prompt": "379bd586bd8d",
+   "round": 1
+  },
+  {
+   "env": "base",
+   "prompt": "511496c40a2a",
+   "round": 2
+  },
+  {
+   "env": "warm-lenient",
+   "prompt": "bd25773481f1",
+   "round": 3
+  },
+  {
+   "env": "warm-lenient",
+   "prompt": "6470a6bef833",
+   "round": 4
+  }
+ ],
+ "source": "synthetic",
+ "task": {
+  "n_dev": 12,
+  "n_items": 40,
+  "name": "synthetic"
+ },
+ "tool": {
+  "name": "driftaudit",
+  "version": "0.1.0"
+ }
+}
